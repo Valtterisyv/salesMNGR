@@ -1,0 +1,149 @@
+h1, h2, h3, h4, h5, h6, p {
+    font-family: font-family: 'Roboto', sans-serif;;
+    color: black;
+    font-weight: bold;
+}
+
+p {
+    margin-left: 1%;
+}
+
+a {
+    color: black;
+}
+
+/* IDs */
+
+#title {
+
+}
+
+
+#second-page {
+    background-color: #f5f5f7;
+}
+
+/* classes */
+
+.row {
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+.navbar-brand {
+    font-family: 'Play', sans-serif;
+    font-size: 2rem;
+}
+
+.call-element {
+    padding-top: 4%;
+}
+
+.ball-element {
+    padding-top: 5%;
+    padding-left: 0%;
+    padding-right: 0%;
+}
+
+.p-margin {
+    margin-bottom: 0%;
+}
+
+.p-statsit {
+    padding-top: 10%;
+    padding-bottom: 10%;
+}
+
+.call-text {
+    width: 100%;
+}
+
+.nav-name {
+    padding-top: 0.5rem;
+    margin-left: 0rem;
+}
+
+footer-text {
+    font-size: 0.2rem;
+}
+
+.col-6.call-element {
+    padding-left: 0.5%;
+}
+
+bar-text-1 {
+    padding-top: 1%;
+}
+
+.mngr-bot {
+    margin-right: 1%;
+    padding-left: 1%;
+    height: 12.5rem;
+
+}
+
+.statsit-a {
+    border: none;
+}
+
+.statsit-p {
+    color: black;
+}
+
+.statsit-k {
+    color: black;
+    padding-bottom: 5%;
+}
+
+.circle-img {
+    width: 30px;
+}
+
+.statsit-text {
+    padding-top: 5%;
+    padding-bottom: 5%;
+}
+
+
+
+
+
+
+
+
+.fade-in-text {
+  animation: fadeIn 2s;
+  -webkit-animation: fadeIn 2s;
+  -moz-animation: fadeIn 2s;
+  -o-animation: fadeIn 2s;
+  -ms-animation: fadeIn 2s;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@-moz-keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@-webkit-keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@-o-keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@-ms-keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+html {
+    scroll-behavior: smooth;
+}
