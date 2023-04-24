@@ -1,0 +1,6 @@
+steps:
+  - name: Retrieve secret
+    env:
+      SECRET_KEY: ${{ secrets.SECRET_KEY }}
+      MAIL_PASSWORD: ${{ secrets.MAIL_PASSWORD }}
+      MAIL_ADDRESS: ${{ secrets.MAIL_ADDRESS }}
