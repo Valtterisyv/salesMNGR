@@ -1,6 +1,26 @@
-steps:
-  - name: Retrieve secret
-    env:
-      SECRET_KEY: ${{ secrets.SECRET_KEY }}
-      MAIL_PASSWORD: ${{ secrets.MAIL_PASSWORD }}
-      MAIL_ADDRESS: ${{ secrets.MAIL_ADDRESS }}
+name: Run Python Script
+
+on:
+  workflow_dispatch:
+
+env:
+  SECRET_KEY: ${{ secrets.SECRET_KEY }}
+  MAIL_PASSWORD: ${{ secrets.MAIL_PASSWORD }}
+  MAIL_ADDRESS: ${{ secrets.MAIL_ADDRESS }}
+
+jobs:
+  run-python:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: action/checkout@v3
+        
+      - name: Setup Python
+        uses: action/setup-python@v4
+        with:
+          python-version: '3.11'
+          
+      - name: Run Python Script
+        run: |
+          pip install requests
+          python main.py
