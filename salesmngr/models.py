@@ -31,23 +31,28 @@ class User(db.Model, UserMixin):
         return f"User('{self.first_and_lastname}', '{self.email}')"
 
 
-# class Data(db.Model):
-#    calls = int(my_activities_today),
-#    required_calls = int(person_1.required_daily_calls),
-#    offers = int(my_offers_two_weeks),
-#    required_offers = int(person_1.required_two_week_running_offers),
-#    sales = my_sales_month_3,
-#    required_sales = REQUIRED_SALES_MONTH,
-#    mngr_bot_text = mngr_bot,
-#    offer_to_sale = person_1.os_hit_rate,
-#    call_to_offer = person_1.co_hit_rate,
-#    user = login_form.name.data,
-#    ch_offer_to_sale = CH_OS_HIT_RATE,
-#    ch_call_to_offer = CH_CO_HIT_RATE,
-#    to_bonus = person_1.to_next_bonus,
-#    coming_sales = person_1.coming_sales,
-#    two_week_calls = my_two_week_activities,
-#    required_two_week_calls = person_1.required_two_week_running_calls
+class UserData(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user = db.Column(db.String(50), unique=True, nullable=False)
+    calls = db.Column(db.Integer, nullable=False)
+    required_calls = db.Column(db.Integer, nullable=False)
+    offers = db.Column(db.Integer, nullable=False)
+    required_offers = db.Column(db.Integer, nullable=False)
+    sales = db.Column(db.Float, nullable=False)
+    required_sales = db.Column(db.Float, nullable=False)
+    mngr_bot_text = db.Column(db.String(250), nullable=False)
+    offer_to_sale = db.Column(db.Integer, nullable=False)
+    call_to_offer = db.Column(db.Integer, nullable=False)
+    ch_offer_to_sale = db.Column(db.Integer, nullable=False)
+    ch_call_to_offer = db.Column(db.Integer, nullable=False)
+    to_bonus = db.Column(db.Float, nullable=False)
+    coming_sales = db.Column(db.Float, nullable=False)
+    two_week_calls = db.Column(db.Integer, nullable=False)
+    required_two_week_calls = db.Column(db.Integer, nullable=False)
+
+    def __repr__(self):
+        return f"User_data('{self.calls}', '{self.required_calls}', '{self.offers}', '{self.required_offers}', '{self.sales}', '{self.required_sales}', '{self.mngr_bot_text}', '{self.offer_to_sale}', '{self.call_to_offer}', '{self.to_bonus}', '{self.coming_sales}', '{self.two_week_calls}', '{self.required_two_week_calls}')"
+
 
 with app.app_context():
     db.create_all()

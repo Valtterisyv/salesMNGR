@@ -30,3 +30,4 @@ Flask-Mail==0.9.1
 Flask-SQLAlchemy==3.0.3
 Flask-WTF==1.1.1
 PyJWT==2.6.0
+APScheduler==3.10.1

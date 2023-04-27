@@ -1,9 +1,10 @@
-from salesmngr.models import User
+from salesmngr.models import User, UserData
 from flask import render_template, url_for, flash, redirect, request
 from salesmngr.forms import RegistrationForm, LoginForm, RequestResetForm, ResetPasswordForm
 from salesmngr import app, db, bcrypt, mail
 from flask_login import login_user, current_user, logout_user, login_required
 from flask_mail import Message
+
 
 @app.route("/")
 @app.route("/home")
@@ -42,8 +43,17 @@ def login():
         user = User.query.filter_by(email=form.email.data).first()
         if user and bcrypt.check_password_hash(user.password, form.password.data):
             login_user(user, remember=form.remember.data)
-            next_page = request.args.get('next')
-            return redirect(next_page) if next_page else redirect(url_for('account'))
+            user = UserData.query.filter_by(user=form.email.data).first()
+            return render_template("account_full.html", calls=user.calls,
+                                   required_calls=user.required_calls, offers=user.offers,
+                                   required_offers=user.required_offers,
+                                   sales=user.sales, required_sales=user.required_sales,
+                                   mngr_bot_text=user.mngr_bot_text,
+                                   offer_to_sale=user.offer_to_sale, call_to_offer=user.call_to_offer,
+                                   user=user.user, ch_offer_to_sale=user.ch_offer_to_sale,
+                                   ch_call_to_offer=user.ch_call_to_offer, to_bonus=user.to_bonus,
+                                   coming_sales=user.coming_sales, two_week_calls=user.two_week_calls,
+                                   required_two_week_calls=user.required_two_week_calls)
         else:
             flash("Kirjautuminen epäonnistunut. Tarkista sähköpostiosoite sekä salasana.", "danger")
     return render_template("login.html", title="Kirjaudu", form=form)
@@ -58,17 +68,29 @@ def logout():
 @app.route("/profiili")
 @login_required
 def account():
-    return render_template("account.html", title="Profiili")
+    if current_user.is_authenticated:
+        user = UserData.query.filter_by(user=current_user.email).first()
+        return render_template("account_full.html", title="Profiili", calls=user.calls,
+                               required_calls=user.required_calls, offers=user.offers,
+                               required_offers=user.required_offers,
+                               sales=user.sales, required_sales=user.required_sales, mngr_bot_text=user.mngr_bot_text,
+                               offer_to_sale=user.offer_to_sale, call_to_offer=user.call_to_offer,
+                               user=user.user, ch_offer_to_sale=user.ch_offer_to_sale,
+                               ch_call_to_offer=user.ch_call_to_offer, to_bonus=user.to_bonus,
+                               coming_sales=user.coming_sales, two_week_calls=user.two_week_calls,
+                               required_two_week_calls=user.required_two_week_calls)
+
 
 def send_reset_email(user):
     token = user.get_reset_token()
     msg = Message('Salasanan vaihto pyyntö', sender='mngr.integraatio@gmail.com', recipients=[user.email])
     msg.body = f'''Pääset vaihtamaan salasanasi tästä linkistä:
-{url_for('reset_token', token= token, _external= True)}
+{url_for('reset_token', token=token, _external=True)}
     
 Jos et tehnyt tätä pyyntöä, tästä sähköpostista ei tarvitse välittää. 
 '''
     mail.send(msg)
+
 
 @app.route("/vaihda_salasana", methods=["GET", "POST"])
 def reset_request():
