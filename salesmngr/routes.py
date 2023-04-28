@@ -20,7 +20,7 @@ def about():
 @app.route("/rekisteröidy", methods=["GET", "POST"])
 def register():
     if current_user.is_authenticated:
-        return redirect(url_for('home'))
+        return redirect(url_for('account'))
     form = RegistrationForm()
     if form.validate_on_submit():
         hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
@@ -37,23 +37,14 @@ def register():
 @app.route("/kirjaudu", methods=["GET", "POST"])
 def login():
     if current_user.is_authenticated:
-        return redirect(url_for('home'))
+        return redirect(url_for('account'))
     form = LoginForm()
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
         if user and bcrypt.check_password_hash(user.password, form.password.data):
             login_user(user, remember=form.remember.data)
             user = UserData.query.filter_by(user=form.email.data).first()
-            return render_template("account_full.html", calls=user.calls,
-                                   required_calls=user.required_calls, offers=user.offers,
-                                   required_offers=user.required_offers,
-                                   sales=user.sales, required_sales=user.required_sales,
-                                   mngr_bot_text=user.mngr_bot_text,
-                                   offer_to_sale=user.offer_to_sale, call_to_offer=user.call_to_offer,
-                                   user=user.user, ch_offer_to_sale=user.ch_offer_to_sale,
-                                   ch_call_to_offer=user.ch_call_to_offer, to_bonus=user.to_bonus,
-                                   coming_sales=user.coming_sales, two_week_calls=user.two_week_calls,
-                                   required_two_week_calls=user.required_two_week_calls)
+            return redirect(url_for('account'))
         else:
             flash("Kirjautuminen epäonnistunut. Tarkista sähköpostiosoite sekä salasana.", "danger")
     return render_template("login.html", title="Kirjaudu", form=form)
@@ -95,7 +86,7 @@ Jos et tehnyt tätä pyyntöä, tästä sähköpostista ei tarvitse välittää.
 @app.route("/vaihda_salasana", methods=["GET", "POST"])
 def reset_request():
     if current_user.is_authenticated:
-        return redirect(url_for('home'))
+        return redirect(url_for('account'))
     form = RequestResetForm()
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
@@ -108,7 +99,7 @@ def reset_request():
 @app.route("/vaihda_salasana/<token>", methods=["GET", "POST"])
 def reset_token(token):
     if current_user.is_authenticated:
-        return redirect(url_for('home'))
+        return redirect(url_for('account'))
     user = User.verify_reset_token(token)
     if user is None:
         flash('Salasanan vaihdon aikaikkuna umpeutunut', 'warning')
