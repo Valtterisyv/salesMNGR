@@ -12,7 +12,7 @@ from dateutil.parser import parse
 sched = BlockingScheduler()
 
 
-@sched.scheduled_job('interval', minutes=5)
+@sched.scheduled_job('interval', minutes=10)
 def mngr_engine_function():
     CH_AVG_PRICE = 5203  # tämä päivitetään, kun saadaan aikaikkunat kuntoon tietojen noutamisessa
     CH_OS_HIT_RATE = 18  # tämä päivitetään, kun saadaan aikaikkunat kuntoon tietojen noutamisessa
