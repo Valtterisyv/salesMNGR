@@ -1,2 +1,2 @@
 web: gunicorn main:app
-clock: python salesMNGR/salesmngr/mngr_engine_main.py
+clock: python mngr_engine_main.py
