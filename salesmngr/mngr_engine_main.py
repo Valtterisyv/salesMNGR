@@ -1,7 +1,6 @@
 from salesmngr.mngr_engine_functions import MngrFunctions
 from salesmngr.models import UserData
 from salesmngr import app, db
-from apscheduler.schedulers.blocking import BlockingScheduler
 import os
 import random
 import pandas as pd
@@ -9,10 +8,7 @@ import requests
 from datetime import datetime, timedelta
 from dateutil.parser import parse
 
-sched = BlockingScheduler()
 
-
-@sched.scheduled_job('interval', minutes=10)
 def mngr_engine_function():
     CH_AVG_PRICE = 5203  # tämä päivitetään, kun saadaan aikaikkunat kuntoon tietojen noutamisessa
     CH_OS_HIT_RATE = 18  # tämä päivitetään, kun saadaan aikaikkunat kuntoon tietojen noutamisessa
@@ -884,5 +880,3 @@ def mngr_engine_function():
             except:
                 print(f"{user_name} - data not found")
 
-
-sched.start()
