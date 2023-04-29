@@ -104,13 +104,13 @@
                             <div class="col text-right pt-5">
                                 {% if two_week_calls >= required_two_week_calls %}
                                 <h2>5 / 5</h2>
-                                {% elif required_two_week_calls > call_to_offer > (ch_call_to_offer * 0.85) %}
+                                {% elif required_two_week_calls > two_week_calls > (required_two_week_calls * 0.85) %}
                                 <h2>4 / 5</h2>
-                                {% elif (required_two_week_calls * 0.85) > call_to_offer > (ch_call_to_offer * 0.7) %}
+                                {% elif (required_two_week_calls * 0.85) > two_week_calls > (required_two_week_calls * 0.7) %}
                                 <h2>3 / 5</h2>
-                                {% elif (required_two_week_calls * 0.7) > call_to_offer > (ch_call_to_offer * 0.55) %}
+                                {% elif (required_two_week_calls * 0.7) > two_week_calls > (required_two_week_calls * 0.55) %}
                                 <h2>2 / 5</h2>
-                                {% elif (ch_call_to_offer * 1.55) > call_to_offer %}
+                                {% elif (required_two_week_calls * 1.55) > two_week_calls %}
                                 <h2>1 / 5</h2>
                                 {% endif %}
                             </div>
