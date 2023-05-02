@@ -152,9 +152,7 @@ for name in USER_NAME_LIST:
             my_offers_day = len(today_offers_list)
 
             current_two_week_offers_list = [item for item in six_m_offers_list if
-                                            datetime.date(pd.to_datetime(
-                                                item)).isocalendar().week == week_num_now or datetime.date(
-                                                pd.to_datetime(item)).isocalendar().week == (week_num_now - 1)]
+                                            pd.to_datetime(item) >= datetime.today() - timedelta(days=14)]
             my_offers_two_weeks = len(current_two_week_offers_list)
 
             current_week_sales_list = [item for item in six_m_sales_list if
