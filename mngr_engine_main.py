@@ -140,6 +140,12 @@ for name in USER_NAME_LIST:
             m_sales_list = [item for item in six_m_sales_list if pd.to_datetime(item).month == month_num_now]
             my_sales_month = len(m_sales_list)
 
+            my_sales_month_num2 = []
+            for num in range(0, len(my_sales_six_month_for_iteration), 2):
+                if pd.to_datetime(my_sales_six_month_for_iteration[num]).month == month_num_now:
+                    my_sales_month_num2.append(float(my_sales_six_month_for_iteration[num + 1]))
+            my_current_sales_month = sum(my_sales_month_num2)
+
             my_sales_month_2 = []
             for num in range(0, len(my_sales_six_month_for_iteration), 2):
                 if pd.to_datetime(my_sales_six_month_for_iteration[num]).date() > now - timedelta(days=30):
@@ -212,7 +218,7 @@ for name in USER_NAME_LIST:
                                         pd.to_datetime(item) >= datetime.today() - timedelta(days=14)]
             my_two_week_activities = len(two_week_activities_list)
 
-            person_1 = MngrFunctions(my_activities_today, my_offers_day, my_sales_month_3, my_offers_six_month,
+            person_1 = MngrFunctions(my_activities_today, my_offers_day, my_current_sales_month, my_offers_six_month,
                                      my_sales_six_month, REQUIRED_ACTIVITIES_DAY, REQUIRED_OFFERS_DAY,
                                      REQUIRED_SALES_MONTH, BONUS_LINE, BONUS_GAP, my_activities_six_month,
                                      my_active_offers, CH_AVG_PRICE)
