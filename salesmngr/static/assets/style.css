@@ -13,6 +13,15 @@ a {
 
 /* IDs */
 
+#full-div {
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    overflow: hidden;
+    position: fixed;
+}
+
 #title {
 
 }
@@ -23,11 +32,6 @@ a {
 }
 
 /* classes */
-
-.full-div {
-    height: 100%;
-    width: 100%;
-}
 
 .parent-div {
     height: auto;
