@@ -1,7 +1,6 @@
 h1, h2, h3, h4, h5, h6, p {
     font-family: 'Open Sans', sans-serif;;
     color: black;
-    font-weight: bold;
 }
 
 p {
@@ -24,6 +23,42 @@ a {
 }
 
 /* classes */
+
+.parent-div {
+    height: auto;
+}
+
+.child-div {
+    height: 94%;
+}
+
+.padding-right {
+    padding-right: 5%;
+}
+
+.big-text {
+    font-size: 5.5rem;
+}
+
+.white-text {
+    color: white;
+}
+
+.red-text {
+    color: #FF8970;
+}
+
+.green-text {
+    color: #0BA37D;
+}
+
+.gray-text {
+    color: #898989;
+}
+
+.round-div {
+    border-radius: 30px;
+}
 
 .row {
     margin-right: -15px;
