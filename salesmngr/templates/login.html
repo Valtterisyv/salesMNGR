@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 {% block content %}
 <body class="fade-in-text">
-<div class="ml-5 col-lg-5 pl-0">
+<div class="ml-5 mr-5 col-lg-5 pl-0">
     <form method="POST" action="">
         {{ form.hidden_tag() }}
         <fieldset class="form-group">
@@ -47,7 +47,7 @@
         </div>
     </form>
 </div>
-<div class="border-top pt-3 col-lg-5 ml-5 pl-0">
+<div class="border-top pt-3 col-lg-5 ml-5 mr-5 pl-0">
     <small class="text-muted">
         Eikö sinulla vielä ole tiliä luotuna? <a class="ml-2" href="{{ url_for('register') }}">Rekisteröidy tästä</a>
     </small>
