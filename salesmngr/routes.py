@@ -9,6 +9,8 @@ from flask_mail import Message
 @app.route("/")
 @app.route("/home")
 def home():
+    if current_user.is_authenticated:
+        return redirect(url_for('account'))
     return render_template("index.html")
 
 
