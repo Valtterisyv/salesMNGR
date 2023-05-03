@@ -1,6 +1,6 @@
 h1, h2, h3, h4, h5, h6, p {
     font-family: 'Open Sans', sans-serif;;
-    color: black;
+    color: white;
 }
 
 p {
@@ -38,6 +38,10 @@ a {
 
 .big-text {
     font-size: 5.5rem;
+}
+
+.black-text {
+    color: black;
 }
 
 .white-text {

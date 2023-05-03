@@ -162,14 +162,14 @@
                         </nav>
                         <div class="child-div call-element round-div text-left" style="background-color: #f5f5f7;">
                             <div>
-                                <h1 class="font-weight-bold ml-5 mt-1">Statsit</h1>
-                                <p class="ml-5 mr-5">Statsit kertovat myyntisi eri osa-alueiden tämänhetkisen tilanteen ja missä olisi parannettavaa.</p>
-                                <p class="ml-5 mr-5">5 = Yhtä hyvä tai parempi osumaprosentti kuin firman keskiarvo.</p>
+                                <h1 class="font-weight-bold ml-5 mt-1 black-text">Statsit</h1>
+                                <p class="ml-5 mr-5 black-text">Statsit kertovat myyntisi eri osa-alueiden tämänhetkisen tilanteen ja missä olisi parannettavaa.</p>
+                                <p class="ml-5 mr-5 black-text">5 = Yhtä hyvä tai parempi osumaprosentti kuin firman keskiarvo.</p>
                             </div>
                             <ul class="list-inline mb-0">
-                                    <li class="list-inline-item  font-weight-bold mb-0 mr-1 ml-5"><p>Aktiivisuus</p></li>
+                                    <li class="list-inline-item  font-weight-bold mb-0 mr-1 ml-5"><p class="black-text">Aktiivisuus</p></li>
                                     <li class="list-inline-item mb-0 mr-0 ">
-                                        <div class="col text-right pt-5 pr-0 pl-0">
+                                        <div class="col black-text text-right pt-5 pr-0 pl-0">
                                             {% if two_week_calls >= required_two_week_calls %}
                                             <h2 class="green-text font-weight-bold">5</h2>
                                             {% elif required_two_week_calls > two_week_calls > (required_two_week_calls * 0.85) %}
@@ -182,11 +182,11 @@
                                             <h2 class="red-text font-weight-bold">1</h2>
                                             {% endif %}
                                         </div>
-                                        <li class="list-inline-item  font-weight-bold mb-0"><p>/5</p></li>
+                                        <li class="list-inline-item  font-weight-bold mb-0"><p class="black-text">/5</p></li>
                                     </li>
-                                    <li class="list-inline-item  font-weight-bold mb-0 pl-5 ml-2 mr-1"><p>Pitsi</p></li>
+                                    <li class="list-inline-item  font-weight-bold mb-0 pl-5 ml-2 mr-1"><p class="black-text">Pitsi</p></li>
                                     <li class="list-inline-item mb-0 mr-0">
-                                        <div class="col text-right pt-5 pr-0 pl-0">
+                                        <div class="col black-text text-right pt-5 pr-0 pl-0">
                                             {% if call_to_offer <= ch_call_to_offer %}
                                             <h2 class="green-text font-weight-bold">5</h2>
                                             {% elif ch_call_to_offer < call_to_offer < (ch_call_to_offer * 1.25) %}
@@ -199,11 +199,11 @@
                                             <h2 class="red-text font-weight-bold">1</h2>
                                             {% endif %}
                                         </div>
-                                        <li class="list-inline-item  font-weight-bold mb-0"><p>/5</p></li>
+                                        <li class="list-inline-item  font-weight-bold mb-0"><p class="black-text">/5</p></li>
                                     </li>
-                                    <li class="list-inline-item  font-weight-bold mb-0 pl-5 ml-2 mr-1"><p>Klousaus</p></li>
+                                    <li class="list-inline-item  font-weight-bold mb-0 pl-5 ml-2 mr-1"><p class="black-text">Klousaus</p></li>
                                     <li class="list-inline-item mb-0 mr-0">
-                                        <div class="col text-right pt-5 pr-0 pl-0">
+                                        <div class="col black-text text-right pt-5 pr-0 pl-0">
                                             {% if offer_to_sale <= ch_offer_to_sale %}
                                             <h2 class="green-text font-weight-bold">5</h2>
                                             {% elif ch_offer_to_sale < offer_to_sale < (ch_offer_to_sale * 1.25) %}
@@ -216,7 +216,7 @@
                                             <h2 class="red-text font-weight-bold">1</h2>
                                             {% endif %}
                                         </div>
-                                        <li class="list-inline-item  font-weight-bold mb-0"><p>/5</p></li>
+                                        <li class="list-inline-item  font-weight-bold mb-0"><p class="black-text">/5</p></li>
                                     </li>
                             </ul>
                             <hr class="mt-1 mr-5 ml-5 mt-5 mb-5" size="20" color="#898989" noshade>
@@ -224,9 +224,9 @@
 
                    <!-- <div class="col mngr-bot border border-dark rounded"> -->
 
-                            <h5 class="font-weight-bold ml-5 mr-5">MNGR Bot</h5>
+                            <h5 class="font-weight-bold ml-5 mr-5 black-text">MNGR Bot</h5>
                             <div class="row ml-3 mr-3 ml-5 mr-5">
-                                <p class="ml-0">{{ mngr_bot_text }}</p>
+                                <p class="ml-0 black-text">{{ mngr_bot_text }}</p>
                             </div>
                         </div>
                     </div>
@@ -242,39 +242,39 @@
           <div class="col-lg call-element p-statsit">
                             <div class="row">
                                 <div class="col pt-5 pb-5">
-                                    <h3>{{ current_user.first_and_lastname }}</h3>
+                                    <h3 class="black-text">{{ current_user.first_and_lastname }}</h3>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col">
-                                    <p class="p-margin">Soitto / Tarjous Hit-rate:</p>
+                                    <p class="black-text p-margin">Soitto / Tarjous Hit-rate:</p>
                                 </div>
                                 <div class="col text-right">
-                                    <p>1/{{ call_to_offer }}</p>
+                                    <p class="black-text">1/{{ call_to_offer }}</p>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col">
-                                    <p class="p-margin">Tarjous / Kauppa Hit-rate:</p>
+                                    <p class="p-margin black-text">Tarjous / Kauppa Hit-rate:</p>
                                 </div>
                                 <div class="col text-right">
-                                    <p>1/{{ offer_to_sale }}</p>
+                                    <p class="black-text">1/{{ offer_to_sale }}</p>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col">
-                                    <p class="p-margin">Matkaa seuraavaan bonukseen:</p>
+                                    <p class="p-margin black-text">Matkaa seuraavaan bonukseen:</p>
                                 </div>
                                 <div class="col text-right">
-                                    <p>{{ to_bonus }} €</p>
+                                    <p class="black-text">{{ to_bonus }} €</p>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col">
-                                    <p class="p-margin">Kauppaa tulossa sisään:</p>
+                                    <p class="p-margin black-text">Kauppaa tulossa sisään:</p>
                                 </div>
                                 <div class="col text-right">
-                                    <p> {{ coming_sales }} €</p>
+                                    <p class="black-text"> {{ coming_sales }} €</p>
                                 </div>
                             </div>
                         <div class="col-6">
@@ -287,12 +287,12 @@
           <div class="col-lg call-element p-statsit">
                             <div class="row">
                                 <div class="col pt-5 pb-5">
-                                    <h3>Tavoitteet & Arvostelu.</h3>
+                                    <h3 class="black-text">Tavoitteet & Arvostelu.</h3>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col">
-                                    <p class="p-margin">Paljonko haluat myydä kuukaudessa?</p>
+                                    <p class="p-margin black-text">Paljonko haluat myydä kuukaudessa?</p>
                                 </div>
                                 <form action="/tavoite" method="post">
                                     <input type="text" placeholder="€" name="sales_in_month">
@@ -301,7 +301,7 @@
                             </div>
                             <div class="row">
                                 <div class="col">
-                                    <p class="p-margin">Jätä kommentti / arvostelu:</p>
+                                    <p class="p-margin black-text">Jätä kommentti / arvostelu:</p>
                                 </div>
                                 <form name="sentMessage" id="contactForm" action="/email" method="post" novalidate>
                                     <div class="input-group">
