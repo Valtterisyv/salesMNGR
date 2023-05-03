@@ -1,163 +1,235 @@
 {% extends "layout.html" %}
 {% block content %}
   <body class="fade-in-text">
-  <section id="title" class="pl-5 pr-5 pb-5">
-                <div class="row pb-5">
-                    <div class="col-lg-6 text-center call-element">
+  <section id="title">
+                <div class="row justify-content-center">
+                    <div class="col-lg-6 call-element padding-right mb-5 pt-2">
+                        <ul class="list-inline text-center mb-0">
+                            <li class="list-inline-item pl-3 pr-2">
+                                <div>
+                                    <ul class="list-inline mb-0">
+                                      <p class="call-text white-text mb-0">Puhelut tänään</p>
+                                      <li class="list-inline-item mb-0"><h1 class="call-text white-text big-text">{{ calls }}</h1></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="list-inline-item pl-3 pr-2">
+                                <div>
+                                    <ul class="list-inline mb-0">
+                                      <p class="call-text white-text mb-0">Tarvittu puhelumäärä</p>
+                                      <li class="list-inline-item mb-0"><h1 class="call-text white-text big-text">{{ required_calls }}</h1></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="list-inline-item pl-3 pr-2">
+                                <div>
+                                    <ul class="list-inline mb-0">
+                                      <p class="call-text white-text mb-0">Tavoite puhelumäärä</p>
+                                      <li class="list-inline-item mb-0"><h1 class="call-text white-text big-text">13</h1></li>
+                                    </ul>
+                                </div>
+                            </li>
                         {% if calls < (required_calls * 0.1) %}
-                        <img src="static/images/SALESMNGR/bar-empty.png" class="img-fluid call-bar-1 rounded-pill mt-3" alt="Responsive image">
+                        <img src="static/images/SALESMNGR/bar-empty.png" class="img-fluid call-bar-1 rounded-pill" alt="Responsive image">
                         {% elif (required_calls * 0.1) < calls < (required_calls * 0.2) %}
-                        <img src="static/images/SALESMNGR/bar-red-1.png" class="img-fluid call-bar-1 rounded-pill mt-3" alt="Responsive image">
+                        <img src="static/images/SALESMNGR/bar-red-1.png" class="img-fluid call-bar-1 rounded-pill" alt="Responsive image">
                         {% elif (required_calls * 0.2) < calls < (required_calls * 0.3) %}
-                        <img src="static/images/SALESMNGR/bar-red-2.png" class="img-fluid call-bar-1 rounded-pill mt-3" alt="Responsive image">
+                        <img src="static/images/SALESMNGR/bar-red-2.png" class="img-fluid call-bar-1 rounded-pill" alt="Responsive image">
                         {% elif (required_calls * 0.3) < calls < (required_calls * 0.4) %}
-                        <img src="static/images/SALESMNGR/bar-red-3.png" class="img-fluid call-bar-1 rounded-pill mt-3" alt="Responsive image">
+                        <img src="static/images/SALESMNGR/bar-red-3.png" class="img-fluid call-bar-1 rounded-pill" alt="Responsive image">
                         {% elif (required_calls * 0.4) < calls < (required_calls * 0.5) %}
-                        <img src="static/images/SALESMNGR/bar-red-4.png" class="img-fluid call-bar-1 rounded-pill mt-3" alt="Responsive image">
+                        <img src="static/images/SALESMNGR/bar-red-4.png" class="img-fluid call-bar-1 rounded-pill" alt="Responsive image">
                         {% elif (required_calls * 0.5) < calls < (required_calls * 0.6) %}
-                        <img src="static/images/SALESMNGR/bar-yellow-1.png" class="img-fluid call-bar-1 rounded-pill mt-3" alt="Responsive image">
+                        <img src="static/images/SALESMNGR/bar-yellow-1.png" class="img-fluid call-bar-1 rounded-pill" alt="Responsive image">
                         {% elif (required_calls * 0.6) < calls < (required_calls * 0.7) %}
-                        <img src="static/images/SALESMNGR/bar-yellow-2.png" class="img-fluid call-bar-1 rounded-pill mt-3" alt="Responsive image">
+                        <img src="static/images/SALESMNGR/bar-yellow-2.png" class="img-fluid call-bar-1 rounded-pill" alt="Responsive image">
                         {% elif (required_calls * 0.7) < calls < (required_calls * 0.8) %}
-                        <img src="static/images/SALESMNGR/bar-yellow-3.png" class="img-fluid call-bar-1 rounded-pill mt-3" alt="Responsive image">
+                        <img src="static/images/SALESMNGR/bar-yellow-3.png" class="img-fluid call-bar-1 rounded-pill" alt="Responsive image">
                         {% elif (required_calls * 0.8) < calls < (required_calls * 0.9) %}
-                        <img src="static/images/SALESMNGR/bar-yellow-4.png" class="img-fluid call-bar-1 rounded-pill mt-3" alt="Responsive image">
+                        <img src="static/images/SALESMNGR/bar-yellow-4.png" class="img-fluid call-bar-1 rounded-pill" alt="Responsive image">
                         {% elif (required_calls * 0.9) < calls <= required_calls %}
-                        <img src="static/images/SALESMNGR/bar-green-1.png" class="img-fluid call-bar-1 rounded-pill mt-3" alt="Responsive image">
+                        <img src="static/images/SALESMNGR/bar-green-1.png" class="img-fluid call-bar-1 rounded-pill" alt="Responsive image">
                         {% elif (required_calls * 1) < calls %}
-                        <img src="static/images/SALESMNGR/bar-green-1.png" class="img-fluid call-bar-1 rounded-pill mt-3" alt="Responsive image">
+                        <img src="static/images/SALESMNGR/bar-green-1.png" class="img-fluid call-bar-1 rounded-pill" alt="Responsive image">
                         {% endif %}
 
-                        <ul class="list-inline">
-                          <li class="list-inline-item pl-4 pr-3"><p class="call-text">Tänään: {{ calls }} kpl</p></li>
-                          <li class="list-inline-item pl-3 pr-3"><p class="call-text">Tarvitaan: {{ required_calls }} kpl</p></li>
-                          <li class="list-inline-item pl-3 pr-3"><p class="call-text">Tavoite: 13 kpl</p></li>
-                        </ul>
+                        <li class="list-inline-item pl-3 pr-2 pt-5">
+                                <div>
+                                    <ul class="list-inline mb-0">
+                                      <p class="call-text white-text mb-0">14 pv tarjoukset</p>
+                                      <li class="list-inline-item mb-0"><h1 class="call-text white-text">{{ offers }}</h1></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="list-inline-item pl-3 pr-2">
+                                <div>
+                                    <ul class="list-inline mb-0">
+                                      <p class="call-text white-text mb-0">Tarvittu tarjousmäärä</p>
+                                      <li class="list-inline-item mb-0"><h1 class="call-text white-text">{{ required_offers }}</h1></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="list-inline-item pl-3 pr-2">
+                                <div>
+                                    <ul class="list-inline mb-0">
+                                      <p class="call-text white-text mb-0">Tavoite tarjousmäärä</p>
+                                      <li class="list-inline-item mb-0"><h1 class="call-text white-text">13</h1></li>
+                                    </ul>
+                                </div>
+                            </li>
                         {% if offers < (required_offers * 0.1) %}
-                        <img src="static/images/SALESMNGR/bar-empty.png" class="img-fluid call-bar-1 rounded-pill mt-3" alt="Responsive image">
+                        <img src="static/images/SALESMNGR/bar-empty.png" class="img-fluid call-bar-1 rounded-pill" alt="Responsive image">
                         {% elif (required_offers * 0.1) < offers < (required_offers * 0.2) %}
-                        <img src="static/images/SALESMNGR/bar-red-1.png" class="img-fluid call-bar-1 rounded-pill mt-3" alt="Responsive image">
+                        <img src="static/images/SALESMNGR/bar-red-1.png" class="img-fluid call-bar-1 rounded-pill" alt="Responsive image">
                         {% elif (required_offers * 0.2) < offers < (required_offers * 0.3) %}
-                        <img src="static/images/SALESMNGR/bar-red-2.png" class="img-fluid call-bar-1 rounded-pill mt-3" alt="Responsive image">
+                        <img src="static/images/SALESMNGR/bar-red-2.png" class="img-fluid call-bar-1 rounded-pill" alt="Responsive image">
                         {% elif (required_offers * 0.3) < offers < (required_offers * 0.4) %}
-                        <img src="static/images/SALESMNGR/bar-red-3.png" class="img-fluid call-bar-1 rounded-pill mt-3" alt="Responsive image">
+                        <img src="static/images/SALESMNGR/bar-red-3.png" class="img-fluid call-bar-1 rounded-pill" alt="Responsive image">
                         {% elif (required_offers * 0.4) < offers < (required_offers * 0.5) %}
-                        <img src="static/images/SALESMNGR/bar-red-4.png" class="img-fluid call-bar-1 rounded-pill mt-3" alt="Responsive image">
+                        <img src="static/images/SALESMNGR/bar-red-4.png" class="img-fluid call-bar-1 rounded-pill" alt="Responsive image">
                         {% elif (required_offers * 0.5) < offers < (required_offers * 0.6) %}
-                        <img src="static/images/SALESMNGR/bar-yellow-1.png" class="img-fluid call-bar-1 rounded-pill mt-3" alt="Responsive image">
+                        <img src="static/images/SALESMNGR/bar-yellow-1.png" class="img-fluid call-bar-1 rounded-pill" alt="Responsive image">
                         {% elif (required_offers * 0.6) < offers < (required_offers * 0.7) %}
-                        <img src="static/images/SALESMNGR/bar-yellow-2.png" class="img-fluid call-bar-1 rounded-pill mt-3" alt="Responsive image">
+                        <img src="static/images/SALESMNGR/bar-yellow-2.png" class="img-fluid call-bar-1 rounded-pill" alt="Responsive image">
                         {% elif (required_offers * 0.7) < offers < (required_offers * 0.8) %}
-                        <img src="static/images/SALESMNGR/bar-yellow-3.png" class="img-fluid call-bar-1 rounded-pill mt-3" alt="Responsive image">
+                        <img src="static/images/SALESMNGR/bar-yellow-3.png" class="img-fluid call-bar-1 rounded-pill" alt="Responsive image">
                         {% elif (required_offers * 0.8) < offers < (required_offers * 0.9) %}
-                        <img src="static/images/SALESMNGR/bar-yellow-4.png" class="img-fluid call-bar-1 rounded-pill mt-3" alt="Responsive image">
+                        <img src="static/images/SALESMNGR/bar-yellow-4.png" class="img-fluid call-bar-1 rounded-pill" alt="Responsive image">
                         {% elif (required_offers * 0.9) < offers <= required_offers %}
-                        <img src="static/images/SALESMNGR/bar-green-1.png" class="img-fluid call-bar-1 rounded-pill mt-3" alt="Responsive image">
+                        <img src="static/images/SALESMNGR/bar-green-1.png" class="img-fluid call-bar-1 rounded-pill" alt="Responsive image">
                         {% elif (required_offers * 1) < offers %}
-                        <img src="static/images/SALESMNGR/bar-green-1.png" class="img-fluid call-bar-1 rounded-pill mt-3" alt="Responsive image">
+                        <img src="static/images/SALESMNGR/bar-green-1.png" class="img-fluid call-bar-1 rounded-pill" alt="Responsive image">
                         {% endif %}
 
-                        <ul class="list-inline">
-                          <li class="list-inline-item pl-3 pr-2"><p class="call-text">Tällä hetkellä (2vk): {{ offers }} kpl</p></li>
-                          <li class="list-inline-item pl-2 pr-2"><p class="call-text">Tarvitaan (2vk): {{ required_offers }} kpl</p></li>
-                          <li class="list-inline-item pl-2 pr-2"><p class="call-text">Tavoite (2vk): 13 kpl</p></li>
-                        </ul>
+                        <li class="list-inline-item pl-3 pr-2 pt-5">
+                                <div>
+                                    <ul class="list-inline mb-0">
+                                      <p class="call-text white-text mb-0">31pv kaupat</p>
+                                      <li class="list-inline-item mb-0"><h1 class="call-text white-text">{{ sales }}</h1></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="list-inline-item pl-3 pr-2">
+                                <div>
+                                    <ul class="list-inline mb-0">
+                                      <p class="call-text white-text mb-0">Tarvittu kauppamäärä</p>
+                                      <li class="list-inline-item mb-0"><h1 class="call-text white-text">{{ required_sales }}</h1></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="list-inline-item pl-3 pr-2">
+                                <div>
+                                    <ul class="list-inline mb-0">
+                                      <p class="call-text white-text mb-0">Tavoite kauppamäärä</p>
+                                      <li class="list-inline-item mb-0"><h1 class="call-text white-text">13</h1></li>
+                                    </ul>
+                                </div>
+                            </li>
                         {% if sales < (required_sales * 0.1) %}
-                        <img src="static/images/SALESMNGR/bar-empty.png" class="img-fluid call-bar-1 rounded-pill mt-3" alt="Responsive image">
+                        <img src="static/images/SALESMNGR/bar-empty.png" class="img-fluid call-bar-1 rounded-pill" alt="Responsive image">
                         {% elif (required_sales * 0.1) < sales < (required_sales * 0.2) %}
-                        <img src="static/images/SALESMNGR/bar-red-1.png" class="img-fluid call-bar-1 rounded-pill mt-3" alt="Responsive image">
+                        <img src="static/images/SALESMNGR/bar-red-1.png" class="img-fluid call-bar-1 rounded-pill" alt="Responsive image">
                         {% elif (required_sales * 0.2) < sales < (required_sales * 0.3) %}
-                        <img src="static/images/SALESMNGR/bar-red-2.png" class="img-fluid call-bar-1 rounded-pill mt-3" alt="Responsive image">
+                        <img src="static/images/SALESMNGR/bar-red-2.png" class="img-fluid call-bar-1 rounded-pill" alt="Responsive image">
                         {% elif (required_sales * 0.3) < sales < (required_sales * 0.4) %}
-                        <img src="static/images/SALESMNGR/bar-red-3.png" class="img-fluid call-bar-1 rounded-pill mt-3" alt="Responsive image">
+                        <img src="static/images/SALESMNGR/bar-red-3.png" class="img-fluid call-bar-1 rounded-pill" alt="Responsive image">
                         {% elif (required_sales * 0.4) < sales < (required_sales * 0.5) %}
-                        <img src="static/images/SALESMNGR/bar-red-4.png" class="img-fluid call-bar-1 rounded-pill mt-3" alt="Responsive image">
+                        <img src="static/images/SALESMNGR/bar-red-4.png" class="img-fluid call-bar-1 rounded-pill" alt="Responsive image">
                         {% elif (required_sales * 0.5) < sales < (required_sales * 0.6) %}
-                        <img src="static/images/SALESMNGR/bar-yellow-1.png" class="img-fluid call-bar-1 rounded-pill mt-3" alt="Responsive image">
+                        <img src="static/images/SALESMNGR/bar-yellow-1.png" class="img-fluid call-bar-1 rounded-pill" alt="Responsive image">
                         {% elif (required_sales * 0.6) < sales < (required_sales * 0.7) %}
-                        <img src="static/images/SALESMNGR/bar-yellow-2.png" class="img-fluid call-bar-1 rounded-pill mt-3" alt="Responsive image">
+                        <img src="static/images/SALESMNGR/bar-yellow-2.png" class="img-fluid call-bar-1 rounded-pill" alt="Responsive image">
                         {% elif (required_sales * 0.7) < sales < (required_sales * 0.8) %}
-                        <img src="static/images/SALESMNGR/bar-yellow-3.png" class="img-fluid call-bar-1 rounded-pill mt-3" alt="Responsive image">
+                        <img src="static/images/SALESMNGR/bar-yellow-3.png" class="img-fluid call-bar-1 rounded-pill" alt="Responsive image">
                         {% elif (required_sales * 0.8) < sales < (required_sales * 0.9) %}
-                        <img src="static/images/SALESMNGR/bar-yellow-4.png" class="img-fluid call-bar-1 rounded-pill mt-3" alt="Responsive image">
+                        <img src="static/images/SALESMNGR/bar-yellow-4.png" class="img-fluid call-bar-1 rounded-pill" alt="Responsive image">
                         {% elif (required_sales * 0.9) < sales <= required_sales %}
-                        <img src="static/images/SALESMNGR/bar-green-1.png" class="img-fluid call-bar-1 rounded-pill mt-3" alt="Responsive image">
+                        <img src="static/images/SALESMNGR/bar-green-1.png" class="img-fluid call-bar-1 rounded-pill" alt="Responsive image">
                         {% elif (required_sales * 1) < sales %}
-                        <img src="static/images/SALESMNGR/bar-green-1.png" class="img-fluid call-bar-1 rounded-pill mt-3" alt="Responsive image">
+                        <img src="static/images/SALESMNGR/bar-green-1.png" class="img-fluid call-bar-1 rounded-pill" alt="Responsive image">
                         {% endif %}
 
-                        <ul class="list-inline">
-                          <li class="list-inline-item pl-4 pr-3"><p class="call-text">Tällä hetkellä: {{ sales }} €</p></li>
-                          <li class="list-inline-item pl-3 pr-3"><p class="call-text">Tarvitaan: {{ required_sales }} €</p></li>
-                          <li class="list-inline-item pl-3 pr-3"><p class="call-text">Tavoite: 30 000 €</p></li>
-                        </ul>
                     </div>
-                    <div class="col call-element ">
-                    </div>
-                    <div class="col-lg-5 call-element">
-                        <div class="row">
-                            <div class="col pt-5">
-                                <h2>AKTIIVISUUS</h2>
+                    <div class="parent-div col-lg call-element round-div pt-0 pl-4 pr-4 pb-5 mt-2 mb-5 mr-3" style="background-color: #FFFFFF;">
+                        <nav>
+                            <div>
+                                <ul class="navbar-nav ml-auto">
+                                    <li class="nav-item">
+                                        <h5 class="call-text nav-name font-weight-bold mr-5 pr-5 pt-3 pb-2 text-right" style="color: black;">{{ user }}</h5>
+                                    </li>
+                                </ul>
                             </div>
-                            <div class="col text-right pt-5">
-                                {% if two_week_calls >= required_two_week_calls %}
-                                <h2>5 / 5</h2>
-                                {% elif required_two_week_calls > two_week_calls > (required_two_week_calls * 0.85) %}
-                                <h2>4 / 5</h2>
-                                {% elif (required_two_week_calls * 0.85) > two_week_calls > (required_two_week_calls * 0.7) %}
-                                <h2>3 / 5</h2>
-                                {% elif (required_two_week_calls * 0.7) > two_week_calls > (required_two_week_calls * 0.55) %}
-                                <h2>2 / 5</h2>
-                                {% elif (required_two_week_calls * 1.55) > two_week_calls %}
-                                <h2>1 / 5</h2>
-                                {% endif %}
+                        </nav>
+                        <div class="child-div call-element round-div text-left" style="background-color: #f5f5f7;">
+                            <div>
+                                <h1 class="font-weight-bold ml-5 mt-1">Statsit</h1>
+                                <p class="ml-5 mr-5">Statsit kertovat myyntisi eri osa-alueiden tämänhetkisen tilanteen ja missä olisi parannettavaa.</p>
+                                <p class="ml-5 mr-5">5 = Yhtä hyvä osumaprosentti kuin firman keskiarvo tai parempi.</p>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                <h2>PITSI</h2>
-                            </div>
-                            <div class="col text-right">
-                                {% if call_to_offer <= ch_call_to_offer %}
-                                <h2>5 / 5</h2>
-                                {% elif ch_call_to_offer < call_to_offer < (ch_call_to_offer * 1.25) %}
-                                <h2>4 / 5</h2>
-                                {% elif (ch_call_to_offer * 1.25) < call_to_offer < (ch_call_to_offer * 1.5) %}
-                                <h2>3 / 5</h2>
-                                {% elif (ch_call_to_offer * 1.5) < call_to_offer < (ch_call_to_offer * 1.75) %}
-                                <h2>2 / 5</h2>
-                                {% elif (ch_call_to_offer * 1.75) < call_to_offer %}
-                                <h2>1 / 5</h2>
-                                {% endif %}
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col pb-5">
-                                <h2>KLOUSAUS</h2>
-                            </div>
-                            <div class="col text-right">
-                                {% if offer_to_sale <= ch_offer_to_sale %}
-                                <h2>5 / 5</h2>
-                                {% elif ch_offer_to_sale < offer_to_sale < (ch_offer_to_sale * 1.25) %}
-                                <h2>4 / 5</h2>
-                                {% elif (ch_offer_to_sale * 1.25) < offer_to_sale < (ch_offer_to_sale * 1.5) %}
-                                <h2>3 / 5</h2>
-                                {% elif (ch_offer_to_sale * 1.5) < offer_to_sale < (ch_offer_to_sale * 1.75) %}
-                                <h2>2 / 5</h2>
-                                {% elif (ch_offer_to_sale * 1.75) < offer_to_sale %}
-                                <h2>1 / 5</h2>
-                                {% endif %}
-                            </div>
-                        </div>
+                            <ul class="list-inline mb-0">
+                                    <li class="list-inline-item  font-weight-bold mb-0 mr-1 ml-5"><p>Aktiivisuus</p></li>
+                                    <li class="list-inline-item mb-0 mr-0 ">
+                                        <div class="col text-right pt-5 pr-0 pl-0">
+                                            {% if two_week_calls >= required_two_week_calls %}
+                                            <h2 class="green-text font-weight-bold">5</h2>
+                                            {% elif required_two_week_calls > two_week_calls > (required_two_week_calls * 0.85) %}
+                                            <h2 class="green-text font-weight-bold">4</h2>
+                                            {% elif (required_two_week_calls * 0.85) > two_week_calls > (required_two_week_calls * 0.7) %}
+                                            <h2>3</h2>
+                                            {% elif (required_two_week_calls * 0.7) > two_week_calls > (required_two_week_calls * 0.55) %}
+                                            <h2 class="red-text font-weight-bold">2</h2>
+                                            {% elif (required_two_week_calls * 1.55) > two_week_calls %}
+                                            <h2 class="red-text font-weight-bold">1</h2>
+                                            {% endif %}
+                                        </div>
+                                        <li class="list-inline-item  font-weight-bold mb-0"><p>/5</p></li>
+                                    </li>
+                                    <li class="list-inline-item  font-weight-bold mb-0 pl-5 ml-2 mr-1"><p>Pitsi</p></li>
+                                    <li class="list-inline-item mb-0 mr-0">
+                                        <div class="col text-right pt-5 pr-0 pl-0">
+                                            {% if call_to_offer <= ch_call_to_offer %}
+                                            <h2 class="green-text font-weight-bold">5</h2>
+                                            {% elif ch_call_to_offer < call_to_offer < (ch_call_to_offer * 1.25) %}
+                                            <h2 class="green-text font-weight-bold">4</h2>
+                                            {% elif (ch_call_to_offer * 1.25) < call_to_offer < (ch_call_to_offer * 1.5) %}
+                                            <h2>3</h2>
+                                            {% elif (ch_call_to_offer * 1.5) < call_to_offer < (ch_call_to_offer * 1.75) %}
+                                            <h2 class="red-text font-weight-bold">2</h2>
+                                            {% elif (ch_call_to_offer * 1.75) < call_to_offer %}
+                                            <h2 class="red-text font-weight-bold">1</h2>
+                                            {% endif %}
+                                        </div>
+                                        <li class="list-inline-item  font-weight-bold mb-0"><p>/5</p></li>
+                                    </li>
+                                    <li class="list-inline-item  font-weight-bold mb-0 pl-5 ml-2 mr-1"><p>Klousaus</p></li>
+                                    <li class="list-inline-item mb-0 mr-0">
+                                        <div class="col text-right pt-5 pr-0 pl-0">
+                                            {% if offer_to_sale <= ch_offer_to_sale %}
+                                            <h2 class="green-text font-weight-bold">5</h2>
+                                            {% elif ch_offer_to_sale < offer_to_sale < (ch_offer_to_sale * 1.25) %}
+                                            <h2 class="green-text font-weight-bold">4</h2>
+                                            {% elif (ch_offer_to_sale * 1.25) < offer_to_sale < (ch_offer_to_sale * 1.5) %}
+                                            <h2>3</h2>
+                                            {% elif (ch_offer_to_sale * 1.5) < offer_to_sale < (ch_offer_to_sale * 1.75) %}
+                                            <h2 class="red-text font-weight-bold">2</h2>
+                                            {% elif (ch_offer_to_sale * 1.75) < offer_to_sale %}
+                                            <h2 class="red-text font-weight-bold">1</h2>
+                                            {% endif %}
+                                        </div>
+                                        <li class="list-inline-item  font-weight-bold mb-0"><p>/5</p></li>
+                                    </li>
+                            </ul>
+                            <hr class="mt-1 mr-5 ml-5 mt-5 mb-5" size="20" color="#898989" noshade>
 
-               <!-- <div class="col mngr-bot border border-dark rounded"> -->
-                        <div class="row">
-                            <div class="col mngr-bot border border-dark rounded">
-                                <p class="font-weight-normal ">MNGR bot: {{ mngr_bot_text }}</p>
+
+                   <!-- <div class="col mngr-bot border border-dark rounded"> -->
+
+                            <h5 class="font-weight-bold ml-5 mr-5">MNGR Bot</h5>
+                            <div class="row ml-3 mr-3 ml-5 mr-5">
+                                <p class="ml-0">{{ mngr_bot_text }}</p>
                             </div>
                         </div>
                     </div>
-                </div>
 
   </section>
 
@@ -170,7 +242,7 @@
           <div class="col-lg call-element p-statsit">
                             <div class="row">
                                 <div class="col pt-5 pb-5">
-                                    <h3>{{ current_user.first_and_lastname }}</h3>
+                                    <h3>{{ user }}</h3>
                                 </div>
                             </div>
                             <div class="row">
