@@ -843,7 +843,7 @@ for name in USER_NAME_LIST:
             twentyone_list = []
             twentyone_days = len(twentyone_list)
             if weekday_now != "Sat" or weekday_now != "Sun":
-                if time_now > "23:00":
+                if time_now > "20:00":
                     if my_activities_today > person_1.required_daily_calls:
                         if twentyone_days < 21:
                             twentyone_list.append(1)
