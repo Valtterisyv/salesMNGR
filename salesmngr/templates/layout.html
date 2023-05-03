@@ -33,9 +33,6 @@
                     <li class="nav-item">
                         <a class="nav-link pr-4" href="{{ url_for('logout') }}">Kirjaudu ulos</a>
                     </li>
-                    <li class="nav-item">
-                        <p class="call-text nav-name" href="{{ url_for('account') }}">{{ current_user.first_and_lastname }}</p>
-                    </li>
                     {% else %}
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('login') }}">Kirjaudu</a>
