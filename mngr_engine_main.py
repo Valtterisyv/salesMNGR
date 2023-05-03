@@ -136,6 +136,7 @@ for name in USER_NAME_LIST:
                     my_sales_six_month_for_iteration.append(sales_list[num])
                     my_sales_six_month_for_iteration.append(float(sales_list[num + 1]))
             my_sales_six_month_3 = sum(my_sales_six_month_2)
+            my_sales_six_m_avg = round(my_sales_six_month_3 / my_sales_six_month, 1)
 
             m_sales_list = [item for item in six_m_sales_list if pd.to_datetime(item).month == month_num_now]
             my_sales_month = len(m_sales_list)
@@ -221,7 +222,7 @@ for name in USER_NAME_LIST:
             person_1 = MngrFunctions(my_activities_today, my_offers_day, my_current_sales_month, my_offers_six_month,
                                      my_sales_six_month, REQUIRED_ACTIVITIES_DAY, REQUIRED_OFFERS_DAY,
                                      REQUIRED_SALES_MONTH, BONUS_LINE, BONUS_GAP, my_activities_six_month,
-                                     my_active_offers, CH_AVG_PRICE)
+                                     my_active_offers, my_sales_six_m_avg)
 
             if weekday_now != "Sat" or weekday_now != "Sun":
                 # days 1 - 8
