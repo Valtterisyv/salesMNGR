@@ -840,6 +840,26 @@ for name in USER_NAME_LIST:
                             ]
                             mngr_bot = random.choice(quotes)
 
+            twentyone_list = []
+            twentyone_days = len(twentyone_list)
+            if weekday_now != "Sat" or weekday_now != "Sun":
+                if time_now > "23:00":
+                    if my_activities_today > person_1.required_daily_calls:
+                        if twentyone_days < 21:
+                            twentyone_list.append(1)
+                        else:
+                            twentyone_list.pop(0)
+                            twentyone_list.append(1)
+                    elif 0 < my_activities_today < person_1.required_daily_calls:
+                        if twentyone_days < 21:
+                            twentyone_list.append(0)
+                        else:
+                            twentyone_list.pop(0)
+                            twentyone_list.append(0)
+            good_days = sum(twentyone_list)
+
+
+
             with app.app_context():
                 user = UserData.query.filter_by(user=user_name).first()
                 if user:
@@ -859,6 +879,8 @@ for name in USER_NAME_LIST:
                     user.coming_sales = person_1.coming_sales
                     user.two_week_calls = my_two_week_activities
                     user.required_two_week_calls = person_1.required_two_week_running_calls
+                    user.good_days = good_days
+                    user.twentyone_days = twentyone_days
 
                     db.session.commit()
                 else:
@@ -877,7 +899,9 @@ for name in USER_NAME_LIST:
                                          to_bonus=person_1.to_next_bonus,
                                          coming_sales=person_1.coming_sales,
                                          two_week_calls=my_two_week_activities,
-                                         required_two_week_calls=person_1.required_two_week_running_calls)
+                                         required_two_week_calls=person_1.required_two_week_running_calls,
+                                         good_days=good_days,
+                                         twentyone_days=twentyone_days)
                     db.session.add(user_data)
                     db.session.commit()
             print(f"{user_name} - success!")
