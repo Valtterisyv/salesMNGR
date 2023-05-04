@@ -49,10 +49,6 @@ class UserData(db.Model):
     coming_sales = db.Column(db.Float, nullable=False)
     two_week_calls = db.Column(db.Integer, nullable=False)
     required_two_week_calls = db.Column(db.Integer, nullable=False)
-    good_days = db.Column(db.Integer, nullable=True)
-    twentyone_days = db.Column(db.Integer, nullable=True)
-    today = db.Column(db.String(50), nullable=True)
-    twentyone_list = db.Column(db.ARRAY, nullable=True)
 
     def __repr__(self):
         return f"User_data('{self.calls}', '{self.required_calls}', '{self.offers}', '{self.required_offers}', '{self.sales}', '{self.required_sales}', '{self.mngr_bot_text}', '{self.offer_to_sale}', '{self.call_to_offer}', '{self.to_bonus}', '{self.coming_sales}', '{self.two_week_calls}', '{self.required_two_week_calls}')"

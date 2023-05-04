@@ -838,50 +838,23 @@ for name in USER_NAME_LIST:
                             ]
                             mngr_bot = random.choice(quotes)
 
-            with app.app_context():
-                user = UserData.query.filter_by(user=user_name).first()
-                if user:
-                    if user.today != str(date.today()):
-                        twentyone_list = user.twentyone_list
-                        twentyone_days = len(twentyone_list)
-                        if weekday_now != "Sat" or weekday_now != "Sun":
-                            if my_activities_today > person_1.required_daily_calls:
-                                if twentyone_days < 21:
-                                    twentyone_list.append(1)
-                                else:
-                                    twentyone_list.pop(0)
-                                    twentyone_list.append(1)
-                            elif 0 < my_activities_today < person_1.required_daily_calls:
-                                if twentyone_days < 21:
-                                    twentyone_list.append(0)
-                                else:
-                                    twentyone_list.pop(0)
-                                    twentyone_list.append(0)
-                        good_days = sum(twentyone_list)
-
-                        user.good_days = good_days
-                        user.twentyone_days = twentyone_days
-                        user.today = str(date.today())
-                        user.twentyone_list = twentyone_list
-
-                        db.session.commit()
-                        print(f"{user_name} - update twentyone success!")
-            twentyone_list = []
-            twentyone_days = len(twentyone_list)
-            if weekday_now != "Sat" or weekday_now != "Sun":
-                if my_activities_today > person_1.required_daily_calls:
-                    if twentyone_days < 21:
-                        twentyone_list.append(1)
-                    else:
-                        twentyone_list.pop(0)
-                        twentyone_list.append(1)
-                elif 0 < my_activities_today < person_1.required_daily_calls:
-                    if twentyone_days < 21:
-                        twentyone_list.append(0)
-                    else:
-                        twentyone_list.pop(0)
-                        twentyone_list.append(0)
-            good_days = sum(twentyone_list)
+            if "15:00" < time_now < "23:10":
+                if weekday_now != "Sat" or weekday_now != "Sun":
+                    twentyone_list = []
+                    twentyone_days = len(twentyone_list)
+                    if my_activities_today > person_1.required_daily_calls:
+                        if twentyone_days < 21:
+                            twentyone_list.append(1)
+                        else:
+                            twentyone_list.pop(0)
+                            twentyone_list.append(1)
+                    elif 0 < my_activities_today < person_1.required_daily_calls:
+                        if twentyone_days < 21:
+                            twentyone_list.append(0)
+                        else:
+                            twentyone_list.pop(0)
+                            twentyone_list.append(0)
+                    good_days = sum(twentyone_list)
 
             with app.app_context():
                 user = UserData.query.filter_by(user=user_name).first()
@@ -904,7 +877,6 @@ for name in USER_NAME_LIST:
                     user.required_two_week_calls = person_1.required_two_week_running_calls
 
                     db.session.commit()
-                    print(f"{user_name} - update success!")
                 else:
                     user_data = UserData(user=user_name,
                                          calls=my_activities_today,
@@ -921,14 +893,10 @@ for name in USER_NAME_LIST:
                                          to_bonus=person_1.to_next_bonus,
                                          coming_sales=person_1.coming_sales,
                                          two_week_calls=my_two_week_activities,
-                                         required_two_week_calls=person_1.required_two_week_running_calls,
-                                         good_days=good_days,
-                                         twentyone_days=twentyone_days,
-                                         today=str(date.today()),
-                                         twentyone_list=twentyone_list)
+                                         required_two_week_calls=person_1.required_two_week_running_calls)
                     db.session.add(user_data)
                     db.session.commit()
-                    print(f"{user_name} - add success!")
+            print(f"{user_name} - success!")
 
         except:
             print(f"{user_name} - data not found")
