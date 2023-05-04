@@ -71,9 +71,7 @@ def account():
                                user=user.user, ch_offer_to_sale=user.ch_offer_to_sale,
                                ch_call_to_offer=user.ch_call_to_offer, to_bonus=user.to_bonus,
                                coming_sales=user.coming_sales, two_week_calls=user.two_week_calls,
-                               required_two_week_calls=user.required_two_week_calls,
-                               good_days=user.good_days,
-                               twentyone_days=user.twentyone_days)
+                               required_two_week_calls=user.required_two_week_calls)
 
 
 def send_reset_email(user):
