@@ -165,59 +165,61 @@
                                 <h1 class="font-weight-bold ml-5 mt-1">Statsit</h1>
                                 <p class="ml-5 mr-5">Statsit kertovat myyntisi eri osa-alueiden tämänhetkisen tilanteen sekä missä olisi mahdollisesti parannettavaa.</p>
                             </div>
-                            <ul class="list-inline mb-0">
-                                    <li class="list-inline-item  font-weight-bold mb-0 mr-1 ml-5"><p>Aktiivisuus</p></li>
-                                    <li class="list-inline-item mb-0 mr-0 ">
-                                        <div class="col text-right pt-5 pr-0 pl-0">
-                                            {% if two_week_calls >= required_two_week_calls %}
-                                            <h2 class="green-text font-weight-bold">5</h2>
-                                            {% elif required_two_week_calls > two_week_calls > (required_two_week_calls * 0.85) %}
-                                            <h2 class="green-text font-weight-bold">4</h2>
-                                            {% elif (required_two_week_calls * 0.85) > two_week_calls > (required_two_week_calls * 0.7) %}
-                                            <h2 class="font-weight-bold gray-text">3</h2>
-                                            {% elif (required_two_week_calls * 0.7) > two_week_calls > (required_two_week_calls * 0.55) %}
-                                            <h2 class="red-text font-weight-bold">2</h2>
-                                            {% elif (required_two_week_calls * 1.55) > two_week_calls %}
-                                            <h2 class="red-text font-weight-bold">1</h2>
-                                            {% endif %}
-                                        </div>
-                                        <li class="list-inline-item  font-weight-bold mb-0"><p>/5</p></li>
-                                    </li>
-                                    <li class="list-inline-item  font-weight-bold mb-0 pl-5 ml-1 mr-1"><p>Pitsi</p></li>
-                                    <li class="list-inline-item mb-0 mr-0">
-                                        <div class="col text-right pt-5 pr-0 pl-0">
-                                            {% if call_to_offer <= ch_call_to_offer %}
-                                            <h2 class="green-text font-weight-bold">5</h2>
-                                            {% elif ch_call_to_offer < call_to_offer < (ch_call_to_offer * 1.25) %}
-                                            <h2 class="green-text font-weight-bold">4</h2>
-                                            {% elif (ch_call_to_offer * 1.25) < call_to_offer < (ch_call_to_offer * 1.5) %}
-                                            <h2 class="font-weight-bold gray-text">3</h2>
-                                            {% elif (ch_call_to_offer * 1.5) < call_to_offer < (ch_call_to_offer * 1.75) %}
-                                            <h2 class="red-text font-weight-bold">2</h2>
-                                            {% elif (ch_call_to_offer * 1.75) < call_to_offer %}
-                                            <h2 class="red-text font-weight-bold">1</h2>
-                                            {% endif %}
-                                        </div>
-                                        <li class="list-inline-item  font-weight-bold mb-0"><p>/5</p></li>
-                                    </li>
-                                    <li class="list-inline-item  font-weight-bold mb-0 pl-5 ml-1 mr-1"><p>Klousaus</p></li>
-                                    <li class="list-inline-item mb-0 mr-0">
-                                        <div class="col text-right pt-5 pr-0 pl-0">
-                                            {% if offer_to_sale <= ch_offer_to_sale %}
-                                            <h2 class="green-text font-weight-bold">5</h2>
-                                            {% elif ch_offer_to_sale < offer_to_sale < (ch_offer_to_sale * 1.25) %}
-                                            <h2 class="green-text font-weight-bold">4</h2>
-                                            {% elif (ch_offer_to_sale * 1.25) < offer_to_sale < (ch_offer_to_sale * 1.5) %}
-                                            <h2 class="font-weight-bold gray-text">3</h2>
-                                            {% elif (ch_offer_to_sale * 1.5) < offer_to_sale < (ch_offer_to_sale * 1.75) %}
-                                            <h2 class="red-text font-weight-bold">2</h2>
-                                            {% elif (ch_offer_to_sale * 1.75) < offer_to_sale %}
-                                            <h2 class="red-text font-weight-bold">1</h2>
-                                            {% endif %}
-                                        </div>
-                                        <li class="list-inline-item  font-weight-bold mb-0"><p>/5</p></li>
-                                    </li>
-                            </ul>
+                            <div class="col">
+                                <ul class="list-inline mb-0 ">
+                                        <li class="list-inline-item  font-weight-bold mb-0 mr-1 ml-5"><p>Aktiivisuus</p></li>
+                                        <li class="list-inline-item mb-0 mr-0 ">
+                                            <div class="col text-right pt-5 pr-0 pl-0">
+                                                {% if two_week_calls >= required_two_week_calls %}
+                                                <h2 class="green-text font-weight-bold">5</h2>
+                                                {% elif required_two_week_calls > two_week_calls > (required_two_week_calls * 0.85) %}
+                                                <h2 class="green-text font-weight-bold">4</h2>
+                                                {% elif (required_two_week_calls * 0.85) > two_week_calls > (required_two_week_calls * 0.7) %}
+                                                <h2 class="font-weight-bold gray-text">3</h2>
+                                                {% elif (required_two_week_calls * 0.7) > two_week_calls > (required_two_week_calls * 0.55) %}
+                                                <h2 class="red-text font-weight-bold">2</h2>
+                                                {% elif (required_two_week_calls * 1.55) > two_week_calls %}
+                                                <h2 class="red-text font-weight-bold">1</h2>
+                                                {% endif %}
+                                            </div>
+                                            <li class="list-inline-item  font-weight-bold mb-0"><p>/5</p></li>
+                                        </li>
+                                        <li class="list-inline-item  font-weight-bold mb-0 pl-5 ml-1 mr-1"><p>Pitsi</p></li>
+                                        <li class="list-inline-item mb-0 mr-0">
+                                            <div class="col text-right pt-5 pr-0 pl-0">
+                                                {% if call_to_offer <= ch_call_to_offer %}
+                                                <h2 class="green-text font-weight-bold">5</h2>
+                                                {% elif ch_call_to_offer < call_to_offer < (ch_call_to_offer * 1.25) %}
+                                                <h2 class="green-text font-weight-bold">4</h2>
+                                                {% elif (ch_call_to_offer * 1.25) < call_to_offer < (ch_call_to_offer * 1.5) %}
+                                                <h2 class="font-weight-bold gray-text">3</h2>
+                                                {% elif (ch_call_to_offer * 1.5) < call_to_offer < (ch_call_to_offer * 1.75) %}
+                                                <h2 class="red-text font-weight-bold">2</h2>
+                                                {% elif (ch_call_to_offer * 1.75) < call_to_offer %}
+                                                <h2 class="red-text font-weight-bold">1</h2>
+                                                {% endif %}
+                                            </div>
+                                            <li class="list-inline-item  font-weight-bold mb-0"><p>/5</p></li>
+                                        </li>
+                                        <li class="list-inline-item  font-weight-bold mb-0 pl-5 ml-1 mr-1"><p>Klousaus</p></li>
+                                        <li class="list-inline-item mb-0 mr-0">
+                                            <div class="col text-right pt-5 pr-0 pl-0">
+                                                {% if offer_to_sale <= ch_offer_to_sale %}
+                                                <h2 class="green-text font-weight-bold">5</h2>
+                                                {% elif ch_offer_to_sale < offer_to_sale < (ch_offer_to_sale * 1.25) %}
+                                                <h2 class="green-text font-weight-bold">4</h2>
+                                                {% elif (ch_offer_to_sale * 1.25) < offer_to_sale < (ch_offer_to_sale * 1.5) %}
+                                                <h2 class="font-weight-bold gray-text">3</h2>
+                                                {% elif (ch_offer_to_sale * 1.5) < offer_to_sale < (ch_offer_to_sale * 1.75) %}
+                                                <h2 class="red-text font-weight-bold">2</h2>
+                                                {% elif (ch_offer_to_sale * 1.75) < offer_to_sale %}
+                                                <h2 class="red-text font-weight-bold">1</h2>
+                                                {% endif %}
+                                            </div>
+                                            <li class="list-inline-item  font-weight-bold mb-0"><p>/5</p></li>
+                                        </li>
+                                </ul>
+                            </div>
                             <hr class="mt-1 mr-5 ml-5 mt-5 mb-5" size="20" color="#898989" noshade>
 
 
