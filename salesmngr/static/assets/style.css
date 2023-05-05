@@ -24,6 +24,13 @@ a {
 
 /* classes */
 
+.bgImgCenter{
+    background-image: url('static/images/SALESMNGR/taustakuva_etusivu.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+}
+
 .parent-div {
     height: auto;
 }
