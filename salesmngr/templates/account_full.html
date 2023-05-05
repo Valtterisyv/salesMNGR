@@ -166,6 +166,21 @@
                                 <p class="ml-5 mr-5">Statsit kertovat myyntisi eri osa-alueiden tämänhetkisen tilanteen sekä missä olisi mahdollisesti parannettavaa.</p>
                             </div>
                             <div class="col">
+                                <li class="list-inline-item  font-weight-bold mb-0 mr-1 ml-5"><p>Viimeisen 21 työpäivän onnistumisprosentti</p></li>
+                                        <li class="list-inline-item mb-0 mr-0 ">
+                                            <div class="col text-right pt-5 pr-0 pl-0">
+                                                {% if user.good_percent >= 80 %}
+                                                <h2 class="green-text font-weight-bold">{{ good_percent }}</h2>
+                                                {% if user.good_percent >= 50 %}
+                                                <h2 class="font-weight-bold gray-text">{{ good_percent }}</h2>
+                                                {% if user.good_percent < 50 %}
+                                                <h2 class="red-text font-weight-bold">{{ good_percent }}</h2>
+                                                {% endif %}
+                                            </div>
+                                            <li class="list-inline-item  font-weight-bold mb-0"><p>%</p></li>
+                                        </li>
+                            </div>
+                            <div class="col">
                                 <ul class="list-inline mb-0 ">
                                         <li class="list-inline-item  font-weight-bold mb-0 mr-1 ml-5"><p>Aktiivisuus</p></li>
                                         <li class="list-inline-item mb-0 mr-0 ">
