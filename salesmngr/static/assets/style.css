@@ -33,7 +33,7 @@ a {
     background-image: url('/static/images/SALESMNGR/taustakuva_etusivu5.png');
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: center center;
+    background-position: center bottom;
     height: 100vh;
     width: 100vw;
 }
