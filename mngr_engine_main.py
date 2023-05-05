@@ -838,62 +838,52 @@ for name in USER_NAME_LIST:
                             ]
                             mngr_bot = random.choice(quotes)
 
-            if weekday_now != "Sat" or weekday_now != "Sun":
-                try:
-                    df = pd.read_csv(f'{user_id}.csv')
-                    today = str(df['date'][0])
-                    date_today = str(date.today())
-                    if today != date_today:
-                        twentyone_list = df[f'{user_id}'].to_list()
-                        twentyone_days = len(twentyone_list) + 1
+            with app.app_context():
+                user = UserData.query.filter_by(user=user_name).first()
+                if user:
+                    if weekday_now != "Sat" or weekday_now != "Sun":
+                        good_days = user.good_days
+                        bad_days = user.bad_days
                         if my_activities_today > person_1.required_daily_calls:
-                            if twentyone_days < 21:
-                                twentyone_list.append(1)
+                            if good_days + bad_days < 21:
+                                good_days += 1
                             else:
-                                twentyone_list.pop(0)
-                                twentyone_list.append(1)
+                                good_days += 1
+                                bad_days -= 1
                         elif 0 < my_activities_today < person_1.required_daily_calls:
-                            if twentyone_days < 21:
-                                twentyone_list.append(0)
+                            if good_days + bad_days < 21:
+                                bad_days += 1
                             else:
-                                twentyone_list.pop(0)
-                                twentyone_list.append(0)
-                        good_days = sum(twentyone_list)
+                                bad_days += 1
+                                good_days -= 1
+                        good_percent = round(good_days * 100 / (good_days + bad_days))
 
-                        twentyone_dict = {f'{user_id}': twentyone_list, 'date': date.today(), 'good_days': good_days,
-                                          'twentyone_days': twentyone_days}
-                        df = pd.DataFrame(twentyone_dict)
-                        df.to_csv(f'{user_id}.csv')
+                        user.good_days = good_days
+                        user.bad_days = bad_days
+                        user.good_percent = good_percent
+
+                        db.session.commit()
+            if weekday_now != "Sat" or weekday_now != "Sun":
+                good_days = 0
+                bad_days = 0
+                if my_activities_today > person_1.required_daily_calls:
+                    if good_days + bad_days < 21:
+                        good_days += 1
                     else:
-                        print("pass")
-
-                except:
-                    twentyone_list = []
-                    twentyone_days = len(twentyone_list) + 1
-                    if my_activities_today > person_1.required_daily_calls:
-                        if twentyone_days < 21:
-                            twentyone_list.append(1)
-                        else:
-                            twentyone_list.pop(0)
-                            twentyone_list.append(1)
-                    elif 0 < my_activities_today < person_1.required_daily_calls:
-                        if twentyone_days < 21:
-                            twentyone_list.append(0)
-                        else:
-                            twentyone_list.pop(0)
-                            twentyone_list.append(0)
-                    good_days = sum(twentyone_list)
-
-                    twentyone_dict = {f'{user_id}': twentyone_list, 'date': date.today(), 'good_days': good_days,
-                                      'twentyone_days': twentyone_days}
-                    df = pd.DataFrame(twentyone_dict)
-                    df.to_csv(f'{user_id}.csv')
+                        good_days += 1
+                        bad_days -= 1
+                elif 0 < my_activities_today < person_1.required_daily_calls:
+                    if good_days + bad_days < 21:
+                        bad_days += 1
+                    else:
+                        bad_days += 1
+                        good_days -= 1
+                good_percent = round(good_days * 100 / (good_days + bad_days))
 
             with app.app_context():
                 user = UserData.query.filter_by(user=user_name).first()
                 if user:
                     user.user = user_name
-                    user.user_id = user_id
                     user.calls = my_activities_today
                     user.required_calls = person_1.required_daily_calls
                     user.offers = my_offers_two_weeks
@@ -913,7 +903,6 @@ for name in USER_NAME_LIST:
                     db.session.commit()
                 else:
                     user_data = UserData(user=user_name,
-                                         user_id=user_id,
                                          calls=my_activities_today,
                                          required_calls=person_1.required_daily_calls,
                                          offers=my_offers_two_weeks,
@@ -928,7 +917,10 @@ for name in USER_NAME_LIST:
                                          to_bonus=person_1.to_next_bonus,
                                          coming_sales=person_1.coming_sales,
                                          two_week_calls=my_two_week_activities,
-                                         required_two_week_calls=person_1.required_two_week_running_calls)
+                                         required_two_week_calls=person_1.required_two_week_running_calls,
+                                         good_days=good_days,
+                                         bad_days=bad_days,
+                                         good_percent=good_percent)
                     db.session.add(user_data)
                     db.session.commit()
             print(f"{user_name} - success!")

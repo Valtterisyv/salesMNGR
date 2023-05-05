@@ -34,7 +34,6 @@ class User(db.Model, UserMixin):
 class UserData(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user = db.Column(db.String(50), unique=True, nullable=False)
-    user_id = db.Column(db.Integer, unique=True, nullable=False)
     calls = db.Column(db.Integer, nullable=False)
     required_calls = db.Column(db.Integer, nullable=False)
     offers = db.Column(db.Integer, nullable=False)
@@ -50,6 +49,9 @@ class UserData(db.Model):
     coming_sales = db.Column(db.Float, nullable=False)
     two_week_calls = db.Column(db.Integer, nullable=False)
     required_two_week_calls = db.Column(db.Integer, nullable=False)
+    good_days = db.Column(db.Integer, nullable=True)
+    bad_days = db.Column(db.Integer, nullable=True)
+    good_percent = db.Column(db.Integer, nullable=True)
 
     def __repr__(self):
         return f"User_data('{self.calls}', '{self.required_calls}', '{self.offers}', '{self.required_offers}', '{self.sales}', '{self.required_sales}', '{self.mngr_bot_text}', '{self.offer_to_sale}', '{self.call_to_offer}', '{self.to_bonus}', '{self.coming_sales}', '{self.two_week_calls}', '{self.required_two_week_calls}')"
