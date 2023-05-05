@@ -34,6 +34,7 @@ class User(db.Model, UserMixin):
 class UserData(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user = db.Column(db.String(50), unique=True, nullable=False)
+    user_id = db.Column(db.Integer, unique=True, nullable=False)
     calls = db.Column(db.Integer, nullable=False)
     required_calls = db.Column(db.Integer, nullable=False)
     offers = db.Column(db.Integer, nullable=False)

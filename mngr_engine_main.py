@@ -838,10 +838,38 @@ for name in USER_NAME_LIST:
                             ]
                             mngr_bot = random.choice(quotes)
 
-            if "15:00" < time_now < "23:10":
-                if weekday_now != "Sat" or weekday_now != "Sun":
+            if weekday_now != "Sat" or weekday_now != "Sun":
+                try:
+                    df = pd.read_csv(f'{user_id}.csv')
+                    today = str(df['date'][0])
+                    date_today = str(date.today())
+                    if today != date_today:
+                        twentyone_list = df[f'{user_id}'].to_list()
+                        twentyone_days = len(twentyone_list) + 1
+                        if my_activities_today > person_1.required_daily_calls:
+                            if twentyone_days < 21:
+                                twentyone_list.append(1)
+                            else:
+                                twentyone_list.pop(0)
+                                twentyone_list.append(1)
+                        elif 0 < my_activities_today < person_1.required_daily_calls:
+                            if twentyone_days < 21:
+                                twentyone_list.append(0)
+                            else:
+                                twentyone_list.pop(0)
+                                twentyone_list.append(0)
+                        good_days = sum(twentyone_list)
+
+                        twentyone_dict = {f'{user_id}': twentyone_list, 'date': date.today(), 'good_days': good_days,
+                                          'twentyone_days': twentyone_days}
+                        df = pd.DataFrame(twentyone_dict)
+                        df.to_csv(f'{user_id}.csv')
+                    else:
+                        print("pass")
+
+                except:
                     twentyone_list = []
-                    twentyone_days = len(twentyone_list)
+                    twentyone_days = len(twentyone_list) + 1
                     if my_activities_today > person_1.required_daily_calls:
                         if twentyone_days < 21:
                             twentyone_list.append(1)
@@ -856,10 +884,16 @@ for name in USER_NAME_LIST:
                             twentyone_list.append(0)
                     good_days = sum(twentyone_list)
 
+                    twentyone_dict = {f'{user_id}': twentyone_list, 'date': date.today(), 'good_days': good_days,
+                                      'twentyone_days': twentyone_days}
+                    df = pd.DataFrame(twentyone_dict)
+                    df.to_csv(f'{user_id}.csv')
+
             with app.app_context():
                 user = UserData.query.filter_by(user=user_name).first()
                 if user:
                     user.user = user_name
+                    user.user_id = user_id
                     user.calls = my_activities_today
                     user.required_calls = person_1.required_daily_calls
                     user.offers = my_offers_two_weeks
@@ -879,6 +913,7 @@ for name in USER_NAME_LIST:
                     db.session.commit()
                 else:
                     user_data = UserData(user=user_name,
+                                         user_id=user_id,
                                          calls=my_activities_today,
                                          required_calls=person_1.required_daily_calls,
                                          offers=my_offers_two_weeks,
