@@ -868,25 +868,8 @@ for name in USER_NAME_LIST:
                             user.bad_days = bad_days
                             user.good_percent = good_percent
                             user.today = date_today
-                            user.user = user_name
-                            user.calls = my_activities_today
-                            user.required_calls = person_1.required_daily_calls
-                            user.offers = my_offers_two_weeks
-                            user.required_offers = person_1.required_two_week_running_offers
-                            user.sales = my_sales_month_3
-                            user.required_sales = REQUIRED_SALES_MONTH
-                            user.mngr_bot_text = mngr_bot
-                            user.offer_to_sale = person_1.os_hit_rate
-                            user.call_to_offer = person_1.co_hit_rate
-                            user.ch_offer_to_sale = CH_OS_HIT_RATE
-                            user.ch_call_to_offer = CH_CO_HIT_RATE
-                            user.to_bonus = person_1.to_next_bonus
-                            user.coming_sales = person_1.coming_sales
-                            user.two_week_calls = my_two_week_activities
-                            user.required_two_week_calls = person_1.required_two_week_running_calls
 
                             db.session.commit()
-
                 else:
                     if weekday_now != "Sat" or weekday_now != "Sun":
                         good_days = 0
@@ -907,30 +890,53 @@ for name in USER_NAME_LIST:
                             good_percent = round(good_days * 100 / (good_days + bad_days))
                         else:
                             good_percent = 0
-                        date_today = str(date.today())
-                        user_data = UserData(user=user_name,
-                                             calls=my_activities_today,
-                                             required_calls=person_1.required_daily_calls,
-                                             offers=my_offers_two_weeks,
-                                             required_offers=person_1.required_two_week_running_offers,
-                                             sales=my_sales_month_3,
-                                             required_sales=REQUIRED_SALES_MONTH,
-                                             mngr_bot_text=mngr_bot,
-                                             offer_to_sale=person_1.os_hit_rate,
-                                             call_to_offer=person_1.co_hit_rate,
-                                             ch_offer_to_sale=CH_OS_HIT_RATE,
-                                             ch_call_to_offer=CH_CO_HIT_RATE,
-                                             to_bonus=person_1.to_next_bonus,
-                                             coming_sales=person_1.coming_sales,
-                                             two_week_calls=my_two_week_activities,
-                                             required_two_week_calls=person_1.required_two_week_running_calls,
-                                             good_days=good_days,
-                                             bad_days=bad_days,
-                                             good_percent=good_percent,
-                                             today=date_today)
-                        db.session.add(user_data)
-                        db.session.commit()
-                print(f"{user_name} - success!")
+                    date_today = str(date.today())
+
+            with app.app_context():
+                user = UserData.query.filter_by(user=user_name).first()
+                if user:
+                    user.user = user_name
+                    user.calls = my_activities_today
+                    user.required_calls = person_1.required_daily_calls
+                    user.offers = my_offers_two_weeks
+                    user.required_offers = person_1.required_two_week_running_offers
+                    user.sales = my_sales_month_3
+                    user.required_sales = REQUIRED_SALES_MONTH
+                    user.mngr_bot_text = mngr_bot
+                    user.offer_to_sale = person_1.os_hit_rate
+                    user.call_to_offer = person_1.co_hit_rate
+                    user.ch_offer_to_sale = CH_OS_HIT_RATE
+                    user.ch_call_to_offer = CH_CO_HIT_RATE
+                    user.to_bonus = person_1.to_next_bonus
+                    user.coming_sales = person_1.coming_sales
+                    user.two_week_calls = my_two_week_activities
+                    user.required_two_week_calls = person_1.required_two_week_running_calls
+
+                    db.session.commit()
+                else:
+                    user_data = UserData(user=user_name,
+                                         calls=my_activities_today,
+                                         required_calls=person_1.required_daily_calls,
+                                         offers=my_offers_two_weeks,
+                                         required_offers=person_1.required_two_week_running_offers,
+                                         sales=my_sales_month_3,
+                                         required_sales=REQUIRED_SALES_MONTH,
+                                         mngr_bot_text=mngr_bot,
+                                         offer_to_sale=person_1.os_hit_rate,
+                                         call_to_offer=person_1.co_hit_rate,
+                                         ch_offer_to_sale=CH_OS_HIT_RATE,
+                                         ch_call_to_offer=CH_CO_HIT_RATE,
+                                         to_bonus=person_1.to_next_bonus,
+                                         coming_sales=person_1.coming_sales,
+                                         two_week_calls=my_two_week_activities,
+                                         required_two_week_calls=person_1.required_two_week_running_calls,
+                                         good_days=good_days,
+                                         bad_days=bad_days,
+                                         good_percent=good_percent,
+                                         today=date_today)
+                    db.session.add(user_data)
+                    db.session.commit()
+            print(f"{user_name} - success!")
 
         except:
             print(f"{user_name} - data not found")
