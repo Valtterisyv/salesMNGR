@@ -845,8 +845,37 @@ for name in USER_NAME_LIST:
                     date_today = str(date.today())
                     if today != date_today:
                         if weekday_now != "Sat" or weekday_now != "Sun":
-                            good_days = user.good_days
-                            bad_days = user.bad_days
+                            if time_now > "23:00":
+                                good_days = user.good_days
+                                bad_days = user.bad_days
+                                if my_activities_today > person_1.required_daily_calls:
+                                    if good_days + bad_days < 21:
+                                        good_days += 1
+                                    else:
+                                        good_days += 1
+                                        bad_days -= 1
+                                elif 0 < my_activities_today < person_1.required_daily_calls:
+                                    if good_days + bad_days < 21:
+                                        bad_days += 1
+                                    else:
+                                        bad_days += 1
+                                        good_days -= 1
+                                if good_days > 0:
+                                    good_percent = round(good_days * 100 / (good_days + bad_days))
+                                else:
+                                    good_percent = 0
+
+                                user.good_days = good_days
+                                user.bad_days = bad_days
+                                user.good_percent = good_percent
+                                user.today = date_today
+
+                                db.session.commit()
+                else:
+                    if weekday_now != "Sat" or weekday_now != "Sun":
+                        if time_now > "23:00":
+                            good_days = 0
+                            bad_days = 0
                             if my_activities_today > person_1.required_daily_calls:
                                 if good_days + bad_days < 21:
                                     good_days += 1
@@ -863,34 +892,7 @@ for name in USER_NAME_LIST:
                                 good_percent = round(good_days * 100 / (good_days + bad_days))
                             else:
                                 good_percent = 0
-
-                            user.good_days = good_days
-                            user.bad_days = bad_days
-                            user.good_percent = good_percent
-                            user.today = date_today
-
-                            db.session.commit()
-                else:
-                    if weekday_now != "Sat" or weekday_now != "Sun":
-                        good_days = 0
-                        bad_days = 0
-                        if my_activities_today > person_1.required_daily_calls:
-                            if good_days + bad_days < 21:
-                                good_days += 1
-                            else:
-                                good_days += 1
-                                bad_days -= 1
-                        elif 0 < my_activities_today < person_1.required_daily_calls:
-                            if good_days + bad_days < 21:
-                                bad_days += 1
-                            else:
-                                bad_days += 1
-                                good_days -= 1
-                        if good_days > 0:
-                            good_percent = round(good_days * 100 / (good_days + bad_days))
-                        else:
-                            good_percent = 0
-                    date_today = str(date.today())
+                            date_today = str(date.today())
 
             with app.app_context():
                 user = UserData.query.filter_by(user=user_name).first()
