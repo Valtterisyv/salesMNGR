@@ -867,6 +867,7 @@ for name in USER_NAME_LIST:
                             user.good_days = good_days
                             user.bad_days = bad_days
                             user.good_percent = good_percent
+                            user.today = date.today()
 
                             db.session.commit()
             if weekday_now != "Sat" or weekday_now != "Sun":
