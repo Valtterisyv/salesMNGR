@@ -856,7 +856,10 @@ for name in USER_NAME_LIST:
                             else:
                                 bad_days += 1
                                 good_days -= 1
-                        good_percent = round(good_days * 100 / (good_days + bad_days))
+                        if good_days > 0:
+                            good_percent = round(good_days * 100 / (good_days + bad_days))
+                        else:
+                            good_percent = 0
 
                         user.good_days = good_days
                         user.bad_days = bad_days
@@ -878,7 +881,10 @@ for name in USER_NAME_LIST:
                     else:
                         bad_days += 1
                         good_days -= 1
-                good_percent = round(good_days * 100 / (good_days + bad_days))
+                if good_days > 0:
+                    good_percent = round(good_days * 100 / (good_days + bad_days))
+                else:
+                    good_percent = 0
 
             with app.app_context():
                 user = UserData.query.filter_by(user=user_name).first()
