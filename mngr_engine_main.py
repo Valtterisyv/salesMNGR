@@ -867,7 +867,7 @@ for name in USER_NAME_LIST:
                             user.good_days = good_days
                             user.bad_days = bad_days
                             user.good_percent = good_percent
-                            user.today = date.today()
+                            user.today = date_today
 
                             db.session.commit()
             if weekday_now != "Sat" or weekday_now != "Sun":
@@ -889,6 +889,7 @@ for name in USER_NAME_LIST:
                     good_percent = round(good_days * 100 / (good_days + bad_days))
                 else:
                     good_percent = 0
+            today = str(date.today())
 
             with app.app_context():
                 user = UserData.query.filter_by(user=user_name).first()
@@ -931,7 +932,7 @@ for name in USER_NAME_LIST:
                                          good_days=good_days,
                                          bad_days=bad_days,
                                          good_percent=good_percent,
-                                         today=date.today())
+                                         today=today)
                     db.session.add(user_data)
                     db.session.commit()
             print(f"{user_name} - success!")
