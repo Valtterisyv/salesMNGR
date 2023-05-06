@@ -94,7 +94,7 @@ class MngrFunctions:
 
     def coming_sales(self, my_active_offers, ch_avg_price):
         sales = int(my_active_offers / self.os_hit_rate)
-        result = sales * ch_avg_price
+        result = round(sales * ch_avg_price)
         return result
 
     def required_two_week_running_calls(self, co_hit_rate, os_hit_rate, my_sales_six_m_avg, required_sales_month):
