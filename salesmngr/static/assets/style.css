@@ -28,12 +28,6 @@ a {
 }
 
 /* classes */
-.button-appear{
-   webkit-appearance: none;
-   moz-appearance: none;
-   appearance: none;
-
- }
 
 .bgImgCenter{
     background-image: url('/static/images/SALESMNGR/taustakuva_etusivu5.png');
