@@ -107,7 +107,7 @@
                                     <ul class="col list-inline mb-0">
                                       <p class="call-text white-text mb-0">30pv myynti</p>
                                     {% if sales > 999 %}
-                                      <li class="list-inline-item mb-0"><h1 class="call-text white-text">{{ sales }}</h1></li>
+                                      <li class="list-inline-item mb-0"><h1 class="call-text white-text">{{ sales/1000 }}k</h1></li>
                                     {% else %}
                                       <li class="list-inline-item mb-0"><h1 class="call-text white-text">{{ sales }}</h1></li>
                                     {% endif %}
@@ -117,8 +117,12 @@
                             <li class="list-inline-item">
                                 <div>
                                     <ul class="col list-inline mb-0">
-                                      <p class="call-text white-text mb-0">Tarvitaan</p>
+                                      <p class="call-text white-text mb-0">30pv myynti</p>
+                                    {% if sales > 999 %}
+                                      <li class="list-inline-item mb-0"><h1 class="call-text white-text">{{ required_sales/1000 }}k</h1></li>
+                                    {% else %}
                                       <li class="list-inline-item mb-0"><h1 class="call-text white-text">{{ required_sales }}</h1></li>
+                                    {% endif %}
                                     </ul>
                                 </div>
                             </li>
@@ -126,7 +130,7 @@
                                 <div>
                                     <ul class="col list-inline mb-0">
                                       <p class="call-text white-text mb-0">Tavoite</p>
-                                      <li class="list-inline-item mb-0"><h1 class="call-text white-text">13</h1></li>
+                                      <li class="list-inline-item mb-0"><h1 class="call-text white-text">30k</h1></li>
                                     </ul>
                                 </div>
                             </li>
