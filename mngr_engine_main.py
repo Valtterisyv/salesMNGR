@@ -150,8 +150,8 @@ for name in USER_NAME_LIST:
                 if pd.to_datetime(my_sales_six_month_for_iteration[num]).date() > now - timedelta(days=30):
                     my_sales_month_2.append(float(my_sales_six_month_for_iteration[num + 1]))
             my_sales_month_4 = sum(my_sales_month_2)
-            if my_sales_month_4 > 999:
-                my_sales_month_3 = round(my_sales_month_4)
+            if my_sales_month_4 % 1 == 0:
+                my_sales_month_3 = int(my_sales_month_4)
             else:
                 my_sales_month_3 = my_sales_month_4
 
