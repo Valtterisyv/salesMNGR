@@ -940,7 +940,8 @@ for name in USER_NAME_LIST:
                     db.session.add(user_data)
                     db.session.commit()
                     print(f"{user_name} - new success!")
-        print(time_now)
 
         except:
             print(f"{user_name} - data not found")
+
+        print(time_now)
