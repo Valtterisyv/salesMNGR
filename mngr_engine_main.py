@@ -916,6 +916,8 @@ for name in USER_NAME_LIST:
 
                     db.session.commit()
                     print(f"{user_name} - update success!")
+
+                    print(f"{good_days}/{bad_days} = {good_percent}")
                 else:
                     user_data = UserData(user=user_name,
                                          calls=my_activities_today,
