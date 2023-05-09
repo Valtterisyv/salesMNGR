@@ -81,7 +81,7 @@ for name in USER_NAME_LIST:
     if name in USER_NAME_LIST_EXCLUDE:
         pass
     else:
-        user_name = name
+        user_name = "ilari.vuoste@contenthouse.fi"
         name_index = USER_NAME_LIST.index(user_name)
         user_id = USER_ID_LIST[name_index]
 
