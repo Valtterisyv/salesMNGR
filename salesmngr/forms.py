@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField, BooleanField
+from wtforms import StringField, PasswordField, SubmitField, BooleanField, IntegerField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
 import email_validator
 from salesmngr.models import User
@@ -44,3 +44,8 @@ class ResetPasswordForm(FlaskForm):
     confirm_password = PasswordField("Salasana uudestaan",
                                      validators=[DataRequired(), EqualTo("password")])
     submit = SubmitField("Päivitä salasana")
+
+class GoalsForm(FlaskForm):
+    goal_num = IntegerField("Tavoite")
+    submit = SubmitField("Päivitä tavoite")
+

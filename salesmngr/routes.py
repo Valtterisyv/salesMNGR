@@ -1,6 +1,6 @@
 from salesmngr.models import User, UserData
 from flask import render_template, url_for, flash, redirect, request
-from salesmngr.forms import RegistrationForm, LoginForm, RequestResetForm, ResetPasswordForm
+from salesmngr.forms import RegistrationForm, LoginForm, RequestResetForm, ResetPasswordForm, GoalsForm
 from salesmngr import app, db, bcrypt, mail
 from flask_login import login_user, current_user, logout_user, login_required
 from flask_mail import Message
@@ -58,11 +58,16 @@ def logout():
     return redirect(url_for('home'))
 
 
-@app.route("/profiili")
+@app.route("/profiili", methods=["GET", "POST"])
 @login_required
 def account():
     if current_user.is_authenticated:
         user = UserData.query.filter_by(user=current_user.email).first()
+        form = GoalsForm()
+        if form.validate_on_submit():
+            with app.app_context():
+                user.goal = form.goal_num.data
+                db.session.commit()
         return render_template("account_full.html", title="Profiili", calls=user.calls,
                                required_calls=user.required_calls, offers=user.offers,
                                required_offers=user.required_offers,
@@ -74,7 +79,8 @@ def account():
                                required_two_week_calls=user.required_two_week_calls,
                                good_days=user.good_days,
                                bad_days=user.bad_days,
-                               good_percent=user.good_percent)
+                               good_percent=user.good_percent,
+                               goal=user.goal)
 
 
 def send_reset_email(user):

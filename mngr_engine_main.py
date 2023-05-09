@@ -918,6 +918,7 @@ for name in USER_NAME_LIST:
                     print(f"{user_name} - update success!")
 
                     print(f"{user.good_days}/{user.bad_days} = {user.good_percent}")
+                    print(f"goal: {user.goal}")
                 else:
                     user_data = UserData(user=user_name,
                                          calls=my_activities_today,
@@ -938,7 +939,8 @@ for name in USER_NAME_LIST:
                                          good_days=good_days,
                                          bad_days=bad_days,
                                          good_percent=good_percent,
-                                         today=date_today)
+                                         today=date_today,
+                                         goal=30000)
                     db.session.add(user_data)
                     db.session.commit()
                     print(f"{user_name} - new success!")
@@ -946,4 +948,3 @@ for name in USER_NAME_LIST:
         except:
             print(f"{user_name} - data not found")
 
-        print(time_now)

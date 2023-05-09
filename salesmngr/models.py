@@ -53,6 +53,7 @@ class UserData(db.Model):
     bad_days = db.Column(db.Integer, nullable=True)
     good_percent = db.Column(db.Integer, nullable=True)
     today = db.Column(db.String(50), nullable=True)
+    goal = db.Column(db.Integer, nullable=True)
 
     def __repr__(self):
         return f"User_data('{self.calls}', '{self.required_calls}', '{self.offers}', '{self.required_offers}', '{self.sales}', '{self.required_sales}', '{self.mngr_bot_text}', '{self.offer_to_sale}', '{self.call_to_offer}', '{self.to_bonus}', '{self.coming_sales}', '{self.two_week_calls}', '{self.required_two_week_calls}')"
