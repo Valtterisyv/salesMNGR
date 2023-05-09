@@ -324,10 +324,16 @@
                             </div>
                             <div class="row">
                                 <form method="POST" action="">
+                                    {{ form.hidden_tag() }}
                                     <fieldset class="form-group">
                                         <legend class="border-bottom mb-4">Paljonko haluat myydä 30 päivässä?</legend>
                                         <div class="form-group">
                                             {{ form.goal_num.label(class="form-control-label") }}
+                                            <div class="invalid-feedback">
+                                                {% for error in form.goal_num.errors %}
+                                                    <span>{{ error }}</span>
+                                                {% endfor %}
+                                            </div>
                                         </div>
                                     </fieldset>
                                 </form>

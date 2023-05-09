@@ -4,6 +4,7 @@ from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationE
 import email_validator
 from salesmngr.models import User
 
+
 class RegistrationForm(FlaskForm):
     first_and_lastname = StringField("Etu- ja Sukunimi",
                                      validators=[DataRequired()])
@@ -29,14 +30,17 @@ class LoginForm(FlaskForm):
     remember = BooleanField("Muista minut")
     submit = SubmitField("Kirjaudu sisään")
 
+
 class RequestResetForm(FlaskForm):
     email = StringField("Sähköpostiosoite",
                         validators=[DataRequired(), Email()])
     submit = SubmitField("Vaihda salasana")
+
     def validate_email(self, email):
         user = User.query.filter_by(email=email.data).first()
         if user is None:
             raise ValidationError('Kyseisellä sähköpostilla ei löytynyt tiliä. Rekisteröidy ensin.')
+
 
 class ResetPasswordForm(FlaskForm):
     password = PasswordField("Salasana",
@@ -45,7 +49,8 @@ class ResetPasswordForm(FlaskForm):
                                      validators=[DataRequired(), EqualTo("password")])
     submit = SubmitField("Päivitä salasana")
 
-class GoalsForm(FlaskForm):
-    goal_num = IntegerField("Tavoite")
-    submit = SubmitField("Päivitä tavoite")
 
+class GoalsForm(FlaskForm):
+    goal_num = IntegerField("Tavoite",
+                            validators=[DataRequired()])
+    submit = SubmitField("Päivitä tavoite")
