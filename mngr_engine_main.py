@@ -33,7 +33,7 @@ RED = "#D0312D"
 # Time
 now = datetime.now().date()
 
-time_now = now.strftime("%H"":""%M")
+time_now = datetime.now().strftime("%H"":""%M")
 
 date_now = int(now.strftime("%d"))
 
