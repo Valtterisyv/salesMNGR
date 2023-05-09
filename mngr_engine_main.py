@@ -915,10 +915,11 @@ for name in USER_NAME_LIST:
                     user.required_two_week_calls = person_1.required_two_week_running_calls
 
                     db.session.commit()
-                    print(f"{user_name} - update success!")
+                    print(f"{user.user} - update success!")
 
                     print(f"{user.good_days}/{user.bad_days} = {user.good_percent}")
                     print(f"goal: {user.goal}")
+
                 else:
                     user_data = UserData(user=user_name,
                                          calls=my_activities_today,
