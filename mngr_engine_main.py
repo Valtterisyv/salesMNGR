@@ -870,6 +870,7 @@ for name in USER_NAME_LIST:
                         db.session.commit()
                         print(f"{user_name} - good_upgrade success!")
                         print(f"{date_today}: {good_days} / {bad_days} = {good_percent}")
+                        print(time_now)
                 else:
                     if weekday_now != "Sat" or weekday_now != "Sun":
                         good_days = 0
