@@ -68,6 +68,8 @@ def account():
             with app.app_context():
                 user.goal = form.goal_num.data
                 db.session.commit()
+            flash(f"Päivitetty tavoite on {form.user.goal.data} €!", "success")
+            return redirect(url_for("account"))
         return render_template("account_full.html", title="Profiili", calls=user.calls,
                                required_calls=user.required_calls, offers=user.offers,
                                required_offers=user.required_offers,
