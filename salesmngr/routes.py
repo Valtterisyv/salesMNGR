@@ -62,7 +62,7 @@ def logout():
 @login_required
 def account():
     if current_user.is_authenticated:
-        user = db.session.query(UserData).first()
+        user = UserData.query.filter_by(user=current_user.email).first()
         form = GoalsForm()
         if form.validate_on_submit():
             with app.app_context():
@@ -70,6 +70,7 @@ def account():
                 db.session.commit()
             flash(f"Päivitetty tavoite on {form.goal_num.data} €!", "success")
             return redirect(url_for("account"))
+        print(user.goal)
         return render_template("account_full.html", title="Profiili", calls=user.calls,
                                required_calls=user.required_calls, offers=user.offers,
                                required_offers=user.required_offers,
