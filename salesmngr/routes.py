@@ -80,7 +80,8 @@ def account():
                                good_days=user.good_days,
                                bad_days=user.bad_days,
                                good_percent=user.good_percent,
-                               goal=user.goal)
+                               goal=user.goal,
+                               form=form)
 
 
 def send_reset_email(user):
