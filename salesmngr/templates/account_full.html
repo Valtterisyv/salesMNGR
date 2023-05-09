@@ -319,16 +319,31 @@
           <div class="pt-5 col-lg call-element p-statsit">
                             <div class="row">
                                 <div class="col pt-5 pb-5">
-                                    <h3>Tavoitteet & Arvostelu.</h3>
+                                    <h3>Tavoitteet</h3>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col">
                                     <p class="p-margin">Paljonko haluat myydä kuukaudessa?</p>
                                 </div>
-                                <form action="{{ url_for('account') }}" method="post">
-                                    <input type="text" placeholder="€" name="sales_in_month">
-                                    <button type="submit">Päivitä tavoite</button>
+                                <form method="POST" action="">
+                                    {{ form.hidden_tag() }}
+                                    <fieldset class="form-group">
+                                        <legend class="border-bottom mb-4">Kirjaudu sisään</legend>
+                                        <div class="form-group">
+                                            {{ form.goal_num.label(class="form-control-label") }}
+
+                                            {% if form.goal_num.errors %}
+                                                {{ form.goal_num(class="form-control form-control-lg is-invalid") }}
+                                                <div class="invalid-feedback">
+                                                    {% for error in form.goal_num.errors %}
+                                                        <span>{{ error }}</span>
+                                                    {% endfor %}
+                                                </div>
+                                            {% else %}
+                                                {{ form.goal_num(class="form-control form-control-lg") }}
+                                            {% endif %}
+                                        </div>
                                 </form>
                             </div>
                             <div class="row">
