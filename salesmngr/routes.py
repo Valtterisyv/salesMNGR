@@ -63,11 +63,10 @@ def logout():
 def account():
     if current_user.is_authenticated:
         user = UserData.query.filter_by(user=current_user.email).first()
-        form = GoalsForm()
-        if form.validate_on_submit():
-            with app.app_context():
-                user.goal = form.goal_num.data
-                db.session.commit()
+        answer = request.form['sales_in_month']
+        with app.app_context():
+            user.goal = float(answer)
+            db.session.commit()
         return render_template("account_full.html", title="Profiili", calls=user.calls,
                                required_calls=user.required_calls, offers=user.offers,
                                required_offers=user.required_offers,
