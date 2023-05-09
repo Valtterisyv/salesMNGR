@@ -62,10 +62,10 @@ def logout():
 @login_required
 def account():
     if current_user.is_authenticated:
+        user = UserData.query.filter_by(user=current_user.email).first()
         form = GoalsForm()
         if form.validate_on_submit():
             with app.app_context():
-                user = UserData.query.filter_by(user=current_user.email).first()
                 user.goal = form.goal_num.data
                 db.session.commit()
             flash(f"Päivitetty tavoite on {form.goal_num.data} €!", "success")
