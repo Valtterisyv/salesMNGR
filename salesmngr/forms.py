@@ -51,6 +51,6 @@ class ResetPasswordForm(FlaskForm):
 
 
 class GoalsForm(FlaskForm):
-    goal_num = IntegerField("Tavoite",
+    goal_num = IntegerField("Paljonko haluat myydä 30pv aikana?",
                             validators=[DataRequired()])
     submit = SubmitField("Päivitä tavoite")
