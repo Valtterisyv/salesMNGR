@@ -66,8 +66,10 @@ def account():
         form = GoalsForm()
         if form.validate_on_submit():
             with app.app_context():
-                user.goal = form.goal_num.data
-                db.session.commit()
+                if user:
+                    user.goal = form.goal_num.data
+                    db.session.commit()
+                    print("Onnistui!!")
             flash(f"Päivitetty tavoite on {form.goal_num.data} €!", "success")
             return redirect(url_for("account"))
         print(user.goal)
