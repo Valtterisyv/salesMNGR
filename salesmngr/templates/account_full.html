@@ -323,21 +323,26 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <form method="POST" action="">
-                                    {{ form.hidden_tag() }}
-                                    <fieldset class="form-group">
-                                        <legend class="border-bottom mb-4">Paljonko haluat myydä 30 päivässä?</legend>
-                                        <div class="form-group">
-                                            {{ form.goal_num.label(class="form-control-label") }}
-                                            <div class="invalid-feedback">
-                                                {% for error in form.goal_num.errors %}
-                                                    <span>{{ error }}</span>
-                                                {% endfor %}
-                                            </div>
-                                        </div>
-                                    </fieldset>
+                                <div class="col">
+                                    <p class="p-margin">Paljonko haluat myydä kuukaudessa?</p>
+                                </div>
+                                <form action="/tavoite" method="post">
+                                    <input type="text" placeholder="€" name="sales_in_month">
+                                    <button type="submit">Käytä</button>
                                 </form>
                             </div>
+                            <div class="row">
+                                <div class="col">
+                                    <p class="p-margin">Jätä kommentti / arvostelu:</p>
+                                </div>
+                                <form name="sentMessage" id="contactForm" action="/email" method="post" novalidate>
+                                    <div class="input-group">
+                                      <textarea rows="3" name="message" class="form-control" placeholder="Message" id="message" required data-validation-required-message="Please enter a message."></textarea>
+                                        <div class="input-group-prepend">
+                                        <button type="submit" class="btn btn-outline-dark" id="sendMessageButton">Lähetä</button>
+                                      </div>
+                                    </div>
+                                </form>
 
                         <div class="col-6">
 
