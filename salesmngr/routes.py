@@ -70,7 +70,7 @@ def account():
                 user.goal = float(form.goal_num.data)
                 db.session.commit()
                 print("Onnistui!!")
-            flash(f"Päivitetty tavoite on {form.goal_num.data} €!", "success")
+            flash(f"Päivitetty tavoite on {user.goal} €!", "success")
             return redirect(url_for("account"))
         else:
             print(user.goal)
