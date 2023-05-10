@@ -879,7 +879,6 @@ for name in USER_NAME_LIST:
                                 print(f"{user_name} - good_upgrade success!")
 
             if weekday_now != "Sat" or weekday_now != "Sun":
-                if time_now > "19:00":
                     good_days = 0
                     bad_days = 0
                     if my_activities_today > person_1.required_daily_calls:
