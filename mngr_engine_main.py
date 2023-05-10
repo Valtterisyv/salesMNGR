@@ -959,6 +959,7 @@ for name in USER_NAME_LIST:
                     db.session.commit()
                     print(f"{user_name} - new success!")
 
-        except:
-            print(f"{user_name} - data not found")
+
+        except Exception as e:
+            print(e)
 
