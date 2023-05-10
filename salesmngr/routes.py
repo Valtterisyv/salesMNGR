@@ -72,21 +72,23 @@ def account():
                 print("Onnistui!!")
             flash(f"Päivitetty tavoite on {form.goal_num.data} €!", "success")
             return redirect(url_for("account"))
-        print(user.goal)
-        return render_template("account_full.html", title="Profiili", calls=user.calls,
-                               required_calls=user.required_calls, offers=user.offers,
-                               required_offers=user.required_offers,
-                               sales=user.sales, required_sales=user.required_sales, mngr_bot_text=user.mngr_bot_text,
-                               offer_to_sale=user.offer_to_sale, call_to_offer=user.call_to_offer,
-                               user=user.user, ch_offer_to_sale=user.ch_offer_to_sale,
-                               ch_call_to_offer=user.ch_call_to_offer, to_bonus=user.to_bonus,
-                               coming_sales=user.coming_sales, two_week_calls=user.two_week_calls,
-                               required_two_week_calls=user.required_two_week_calls,
-                               good_days=user.good_days,
-                               bad_days=user.bad_days,
-                               good_percent=user.good_percent,
-                               goal=user.goal,
-                               form=form)
+        else:
+            print(user.goal)
+            return render_template("account_full.html", title="Profiili", calls=user.calls,
+                                   required_calls=user.required_calls, offers=user.offers,
+                                   required_offers=user.required_offers,
+                                   sales=user.sales, required_sales=user.required_sales,
+                                   mngr_bot_text=user.mngr_bot_text,
+                                   offer_to_sale=user.offer_to_sale, call_to_offer=user.call_to_offer,
+                                   user=user.user, ch_offer_to_sale=user.ch_offer_to_sale,
+                                   ch_call_to_offer=user.ch_call_to_offer, to_bonus=user.to_bonus,
+                                   coming_sales=user.coming_sales, two_week_calls=user.two_week_calls,
+                                   required_two_week_calls=user.required_two_week_calls,
+                                   good_days=user.good_days,
+                                   bad_days=user.bad_days,
+                                   good_percent=user.good_percent,
+                                   goal=user.goal,
+                                   form=form)
 
 
 def send_reset_email(user):
