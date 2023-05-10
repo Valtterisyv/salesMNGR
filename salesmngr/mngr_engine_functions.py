@@ -4,7 +4,7 @@ import math
 class MngrFunctions:
     def __init__(self, my_activities_day, my_offers_day, my_sales_month, my_offers_year, my_sales_year_nr,
                  required_activities_day, required_offers_day, required_sales_month, bonus_line, bonus_gap,
-                 my_activities_year, my_active_offers, my_sales_six_m_avg):
+                 my_activities_year, my_active_offers, my_sales_six_m_avg, my_goal):
         self.cok_ook_sok = self.cok_ook_sok(my_activities_day, my_offers_day, my_sales_month, required_activities_day,
                                             required_offers_day, required_sales_month)
         self.cno_ook_sok = self.cno_ook_sok(my_activities_day, my_offers_day, my_sales_month, required_activities_day,
@@ -33,6 +33,11 @@ class MngrFunctions:
         self.required_two_week_running_offers = self.required_two_week_running_offers(self.os_hit_rate,
                                                                                       my_sales_six_m_avg,
                                                                                       required_sales_month)
+        self.offers_to_goal = self.offers_to_goal(self.os_hit_rate,
+                                                  my_sales_six_m_avg,
+                                                  my_goal)
+        self.calls_to_goal = self.calls_to_goal(self.co_hit_rate, self.os_hit_rate, my_sales_six_m_avg,
+                                                my_goal)
 
     def cok_ook_sok(self, activities_day, offers_day, sales, required_activities_day, required_offers_day,
                     required_sales_month) -> bool:
@@ -114,3 +119,14 @@ class MngrFunctions:
         sales_num = math.ceil(required_sales_month / my_sales_six_m_avg)
         x = (sales_num / 2) * os_hit_rate
         return x
+
+    def offers_to_goal(self, os_hit_rate, my_sales_six_m_avg, goal_target):
+        sales_num = math.ceil(goal_target / my_sales_six_m_avg)
+        x = (sales_num / 2) * os_hit_rate
+        return x
+
+    def calls_to_goal(self, co_hit_rate, os_hit_rate, my_sales_six_m_avg, goal_target):
+        sales_num = math.ceil(goal_target / my_sales_six_m_avg)
+        x = sales_num * os_hit_rate * co_hit_rate
+        r = math.ceil(x / 21)
+        return r
