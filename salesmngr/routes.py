@@ -67,7 +67,7 @@ def account():
         if form.validate_on_submit():
             user.goal = form.goal_num.data
             db.session.commit()
-            flash(f"Päivitetty tavoite on {user.goal} €!", "success")
+            flash(f"Päivitetty tavoite on {user.goal} €! Huom. Soittotavoite sekä tarjoustavoite päivittyy 10 minuutin sisällä.", "success")
             return redirect(url_for("account"))
         else:
             print(user)
