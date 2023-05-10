@@ -216,6 +216,8 @@ for name in USER_NAME_LIST:
                                         pd.to_datetime(item) >= datetime.today() - timedelta(days=14)]
             my_two_week_activities = len(two_week_activities_list)
 
+            print("checkpoint 0")
+
             user = UserData.query.filter_by(user=user_name).first()
             if user:
                 my_goal = user.goal
@@ -842,7 +844,7 @@ for name in USER_NAME_LIST:
                                 "Muista ottaa pieni taukojumppa johonkin väliin, niin jaksaa taas soittaa. Soittamalla ne kaupat tulee."
                             ]
                             mngr_bot = random.choice(quotes)
-
+            print("checkpoint 1")
             with app.app_context():
                 user = UserData.query.filter_by(user=user_name).first()
                 if user:
@@ -877,7 +879,7 @@ for name in USER_NAME_LIST:
 
                                 db.session.commit()
                                 print(f"{user_name} - good_upgrade success!")
-
+            print("checkpoint 2")
             if weekday_now != "Sat" or weekday_now != "Sun":
                     good_days = 0
                     bad_days = 0
@@ -898,7 +900,7 @@ for name in USER_NAME_LIST:
                     else:
                         good_percent = 0
                     date_today = str(date.today())
-
+                    print("checkpoint 3")
             with app.app_context():
                 user = UserData.query.filter_by(user=user_name).first()
                 if user:
@@ -928,6 +930,7 @@ for name in USER_NAME_LIST:
                     print(f"goal: {user.goal}")
 
                 else:
+                    print("checkpoint 4")
                     user_data = UserData(user=user_name,
                                          calls=my_activities_today,
                                          required_calls=person_1.required_daily_calls,
