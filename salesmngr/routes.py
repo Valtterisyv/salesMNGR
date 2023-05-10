@@ -39,7 +39,7 @@ def register():
 @app.route("/kirjaudu", methods=["GET", "POST"])
 def login():
     if current_user.is_authenticated:
-        return redirect(url_for('home'))
+        return redirect(url_for('account'))
     form = LoginForm()
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
@@ -66,8 +66,8 @@ def account():
         print(user)
         form = GoalsForm()
         if form.validate_on_submit():
+            user.goal = form.goal_num.data
             with app.app_context():
-                user.goal = float(form.goal_num.data)
                 db.session.commit()
                 print("Onnistui!!")
             flash(f"Päivitetty tavoite on {user.goal} €!", "success")
