@@ -218,12 +218,12 @@ for name in USER_NAME_LIST:
 
             print("checkpoint 0")
 
-            with app.app_context():
-                user = db.session.query(UserData).filter_by(user=user_name).first()
-                if user:
-                    my_goal = user.goal
-                else:
-                    my_goal = 30000
+            user = db.session.query(UserData).filter_by(user=user_name).first()
+            print(user)
+            if user:
+                my_goal = user.goal
+            else:
+                my_goal = 30000
 
             person_1 = MngrFunctions(my_activities_today, my_offers_day, my_current_sales_month, my_offers_six_month,
                                      my_sales_six_month, REQUIRED_ACTIVITIES_DAY, REQUIRED_OFFERS_DAY,
