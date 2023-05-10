@@ -69,6 +69,7 @@ def account():
             with app.app_context():
                 db.session.commit()
                 print("Onnistui!!")
+                print(user)
             flash(f"Päivitetty tavoite on {user.goal} €!", "success")
             return redirect(url_for("account"))
         else:
