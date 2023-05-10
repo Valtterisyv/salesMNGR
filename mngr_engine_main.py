@@ -218,8 +218,8 @@ for name in USER_NAME_LIST:
 
             print("checkpoint 0")
 
-            if UserData.query.filter_by(user=user_name).first():
-                user = UserData.query.filter_by(user=user_name).first()
+            user = db.session.query(UserData).filter_by(user=user_name).first()
+            if user:
                 my_goal = user.goal
             else:
                 my_goal = 30000
