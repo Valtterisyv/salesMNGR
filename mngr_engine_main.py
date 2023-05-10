@@ -844,7 +844,6 @@ for name in USER_NAME_LIST:
                     date_today = str(date.today())
                     if today != date_today:
                         if weekday_now != "Sat" or weekday_now != "Sun":
-                            if time_now > "23:00":
                                 good_days = user.good_days
                                 bad_days = user.bad_days
                                 if my_activities_today > person_1.required_daily_calls:
