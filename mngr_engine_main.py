@@ -961,5 +961,5 @@ for name in USER_NAME_LIST:
 
 
         except Exception as e:
-            print(e)
+            print(f"{user_name} - {e}")
 
