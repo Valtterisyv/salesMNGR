@@ -87,6 +87,7 @@ def account():
                                    goal=user.goal,
                                    calls_to_goal=user.calls_to_goal,
                                    offers_to_goal=user.offers_to_goal,
+                                   my_sales_avg=user.my_sales_avg,
                                    form=form)
 
 

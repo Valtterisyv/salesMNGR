@@ -922,6 +922,7 @@ for name in USER_NAME_LIST:
                     user.required_two_week_calls = person_1.required_two_week_running_calls
                     user.calls_to_goal = person_1.calls_to_goal
                     user.offers_to_goal = person_1.offers_to_goal
+                    user.my_sales_avg = my_sales_six_m_avg
 
                     db.session.commit()
                     print(f"{user.user} - update success!")
@@ -952,7 +953,8 @@ for name in USER_NAME_LIST:
                                          today=date_today,
                                          goal=my_goal,
                                          calls_to_goal=person_1.calls_to_goal,
-                                         offers_to_goal=person_1.offers_to_goal)
+                                         offers_to_goal=person_1.offers_to_goal,
+                                         my_avg_sales=my_sales_six_m_avg)
                     db.session.add(user_data)
                     db.session.commit()
                     print(f"{user_name} - new success!")
