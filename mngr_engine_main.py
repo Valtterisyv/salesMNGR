@@ -232,7 +232,7 @@ for name in USER_NAME_LIST:
             if weekday_now != "Sat" or weekday_now != "Sun":
                 # days 1 - 8
                 if date_now < 8:
-                    if time_now < "10:00":
+                    if time_now < "07:00":
                         if person_1.cok_ook_sok:
                             quotes = [
                                 "Nyt on hyvä meno! Nyt vaa samalla tsempillä eteenpäin!",
@@ -297,7 +297,7 @@ for name in USER_NAME_LIST:
                             ]
                             mngr_bot = random.choice(quotes)
 
-                    elif "10:00" < time_now < "14:00":
+                    elif "07:00" < time_now < "11:00":
                         if person_1.cok_ook_sok:
                             quotes = [
                                 "Hyvä meininki! Bonarirajoja kohti!",
@@ -437,7 +437,7 @@ for name in USER_NAME_LIST:
 
                 # days 8 - 21
                 if 7 < date_now < 22:
-                    if time_now < "10:00":
+                    if time_now < "07:00":
                         if person_1.cok_ook_sok:
                             quotes = [
                                 "Nyt on hyvä meno! Nyt vaa samalla tsempillä eteenpäin!",
@@ -502,7 +502,7 @@ for name in USER_NAME_LIST:
                             ]
                             mngr_bot = random.choice(quotes)
 
-                    elif "10:00" < time_now < "14:00":
+                    elif "07:00" < time_now < "11:00":
                         if person_1.cok_ook_sok:
                             quotes = [
                                 "Hyvä meininki! Bonarirajoja kohti!",
@@ -642,7 +642,7 @@ for name in USER_NAME_LIST:
 
                 # days 22 -
                 if 21 < date_now:
-                    if time_now < "10:00":
+                    if time_now < "07:00":
                         if person_1.cok_ook_sok:
                             quotes = [
                                 "Nyt on hyvä meno! Nyt vaa samalla tsempillä eteenpäin!",
@@ -707,7 +707,7 @@ for name in USER_NAME_LIST:
                             ]
                             mngr_bot = random.choice(quotes)
 
-                    elif "10:00" < time_now < "14:00":
+                    elif "07:00" < time_now < "11:00":
                         if person_1.cok_ook_sok:
                             quotes = [
                                 "Hyvä meininki! Bonarirajoja kohti!",
