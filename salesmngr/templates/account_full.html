@@ -177,8 +177,23 @@
                                 <h1 class="font-weight-bold ml-5 mt-1">Statsit</h1>
                                 <p class="ml-5 mr-5">Statsit kertovat myyntisi eri osa-alueiden tämänhetkisen tilanteen sekä missä olisi mahdollisesti parannettavaa.</p>
                                 <p class="ml-5 mr-5 mb-3">Puheluprosentti kertoo kuinka usein puhelumääräsi ylittivät vaaditun tason viimeisen 21 työpäivän aikana.</p>
+                                <p class="ml-5 mr-5 mb-3">Keskimyynti kuukaudessa kertoo mikä on keskimyyntisi kuukaudessa viimeiseltä 92 päivältä (~3kk).</p>
                             </div>
                             <div>
+                                <div>
+                                    <li class="list-inline-item  font-weight-bold mb-0 mr-1 ml-5"><p class="ml-0">keskimyynti kuukaudessa</p></li>
+                                            <li class="list-inline-item mb-0 mr-0 ">
+                                                <div class="col text-right pr-0 pl-0">
+                                                    {% if my_sales_3_month_avg >= 1500 %}
+                                                    <h2 class="green-text font-weight-bold">{{ my_sales_3_month_avg }}</h2>
+                                                    {% elif my_sales_3_month_avg < 1500 %}
+                                                    <h2 class="font-weight-bold red-text">{{ my_sales_3_month_avg }}</h2>
+                                                    {% endif %}
+                                                </div>
+                                                <li class="list-inline-item  font-weight-bold mb-0"><p> %</p></li>
+                                            </li>
+                                    </li>
+                                </div>
                                 <div>
                                     <li class="list-inline-item  font-weight-bold mb-0 mr-1 ml-5"><p class="ml-0">Puheluprosentti</p></li>
                                             <li class="list-inline-item mb-0 mr-0 ">
@@ -196,7 +211,7 @@
                                     </li>
                                 </div>
                                 <div>
-                                    <li class="list-inline-item  font-weight-bold mb-0 mr-1 ml-5"><p class="ml-0">Myyntien keskihinta</p></li>
+                                    <li class="list-inline-item  font-weight-bold mb-0 mr-1 ml-5"><p class="ml-0">Keskimyynti</p></li>
                                         <li class="list-inline-item mb-0 mr-0 ">
                                             <div class="col text-right pr-0 pl-0">
                                                 <h2 class="green-text font-weight-bold">{{ my_sales_avg }}</h2>

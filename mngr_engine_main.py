@@ -150,6 +150,13 @@ for name in USER_NAME_LIST:
                 if pd.to_datetime(my_sales_six_month_for_iteration[num]).date() > now - timedelta(days=30):
                     my_sales_month_2.append(float(my_sales_six_month_for_iteration[num + 1]))
             my_sales_month_3 = sum(my_sales_month_2)
+
+            my_sales_month_2_2 = []
+            for num in range(0, len(my_sales_six_month_for_iteration), 2):
+                if pd.to_datetime(my_sales_six_month_for_iteration[num]).date() > now - timedelta(days=92):
+                    my_sales_month_2_2.append(float(my_sales_six_month_for_iteration[num + 1]))
+            my_sales_3_month_avg = sum(my_sales_month_2_2) / 3
+
             today_offers_list = [item for item in six_m_offers_list if
                                  datetime.strftime(pd.to_datetime(item), '%Y-%m-%d') == datetime.strftime(now,
                                                                                                           '%Y-%m-%d')]
@@ -923,6 +930,7 @@ for name in USER_NAME_LIST:
                     user.calls_to_goal = person_1.calls_to_goal
                     user.offers_to_goal = person_1.offers_to_goal
                     user.my_sales_avg = my_sales_six_m_avg
+                    user.my_sales_3_month_avg = my_sales_3_month_avg
 
                     db.session.commit()
                     print(f"{user.user} - update success!")
@@ -954,7 +962,8 @@ for name in USER_NAME_LIST:
                                          goal=my_goal,
                                          calls_to_goal=person_1.calls_to_goal,
                                          offers_to_goal=person_1.offers_to_goal,
-                                         my_sales_avg=my_sales_six_m_avg)
+                                         my_sales_avg=my_sales_six_m_avg,
+                                         my_sales_3_month_avg=my_sales_3_month_avg)
                     db.session.add(user_data)
                     db.session.commit()
                     print(f"{user_name} - new success!")
