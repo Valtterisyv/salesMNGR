@@ -195,11 +195,20 @@
                                             <li class="list-inline-item mb-0 mr-0 ">
                                                 <div class="col text-right pr-0 pl-0">
                                                     {% if three_avg_change_front > 0 %}
+                                                    <li class="list-inline-item mb-0 mr-0 ">
                                                     <i class="green-text fa-solid fa-chevron-up fa-beat-fade"></i>
+                                                    </li>
+                                                    <li class="list-inline-item mb-0 mr-0 ">
                                                     <p class="green-text">{{ three_avg_change_front }}€</p>
+                                                    </li>
+                                                    <li class="list-inline-item mb-0 mr-0 ">
                                                     {% elif three_avg_change_front < 0 %}
+                                                    <li class="list-inline-item mb-0 mr-0 ">
                                                     <i class="red-text fa-solid fa-chevron-down fa-beat-fade"></i>
+                                                    </li>
+                                                    <li class="list-inline-item mb-0 mr-0 ">
                                                     <p class="red-text">{{ three_avg_change_front }}€</p>
+                                                    </li>
                                                     {% endif %}
                                                 </div>
                                             </li>
