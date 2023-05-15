@@ -218,6 +218,8 @@ for name in USER_NAME_LIST:
             today_activities_list = [item for item in new_activities_pvm_list if
                                      parse(item) == parse(str(now)[:10])]
             my_activities_today = len(today_activities_list)
+            print(str(now)[:10])
+            print(item)
 
             two_week_activities_list = [item for item in new_activities_pvm_list if
                                         pd.to_datetime(item) >= datetime.today() - timedelta(days=14)]
