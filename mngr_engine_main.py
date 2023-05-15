@@ -172,7 +172,7 @@ for name in USER_NAME_LIST:
 
             # ACTIVITIES
 
-            endpoint_2 = f'https://contenthouse.crmservice.fi/api/v1/activities?page[size]=10000&page[number]=1&filter=[%7B"owner_id":"{user_id}"%7D]&fields[activities]=activity_type,updated_at'
+            endpoint_2 = f'https://contenthouse.crmservice.fi/api/v1/activities?page[size]=10000&page[number]=1&filter=[%7B"owner_id":"{user_id}"%7D]&fields[activities]=activity_type,created_at'
 
             r_2 = requests.get(url=endpoint_2, headers=headers)
             data = r_2.json()
