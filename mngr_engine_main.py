@@ -187,13 +187,13 @@ for name in USER_NAME_LIST:
                     "activity_type"] == "Ei vastannut" or p["attributes"][
                     "activity_type"] == "Suorapuhelu - hävitty" or p["attributes"][
                     "activity_type"] == "Follow-up":
-                    activities_pvm_list.append(p["attributes"]["updated_at"])
+                    activities_pvm_list.append(p["attributes"]["created_at"])
 
             for p in data["data"]:
                 if p["attributes"]["activity_type"] == "Soitto" or p["attributes"][
                     "activity_type"] == "Suorapuhelu - hävitty" or p["attributes"][
                     "activity_type"] == "Follow-up":
-                    activities_not_include_ev_list.append(p["attributes"]["updated_at"])
+                    activities_not_include_ev_list.append(p["attributes"]["created_at"])
 
             for item in activities_pvm_list:
                 new_item = str(item[:10])
