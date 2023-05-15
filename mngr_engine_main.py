@@ -231,6 +231,21 @@ for name in USER_NAME_LIST:
                 else:
                     my_goal = 30000
 
+                if user:
+                    three_avg_change = user.my_sales_3_month_avg
+                    good_percent_change = user.good_percent
+                    avg_change = user.my_sales_avg
+                    if my_sales_3_month_avg != three_avg_change:
+                        three_avg_change_front = three_avg_change - my_sales_3_month_avg
+                        user.three_avg_change_front = three_avg_change_front
+                        db.session.commit()
+                    if my_sales_six_m_avg != avg_change:
+                        avg_change_front = avg_change - my_sales_six_m_avg
+                        user.avg_change_front = avg_change_front
+                        db.session.commit()
+
+
+
             person_1 = MngrFunctions(my_activities_today, my_offers_day, my_current_sales_month, my_offers_six_month,
                                      my_sales_six_month, REQUIRED_ACTIVITIES_DAY, REQUIRED_OFFERS_DAY,
                                      REQUIRED_SALES_MONTH, BONUS_LINE, BONUS_GAP, my_activities_six_month,
@@ -879,10 +894,14 @@ for name in USER_NAME_LIST:
                                 else:
                                     good_percent = 0
 
+                                if good_percent != good_percent_change:
+                                    good_percent_change_front = good_percent_change - good_percent
+
                                 user.good_days = good_days
                                 user.bad_days = bad_days
                                 user.good_percent = good_percent
                                 user.today = date_today
+                                user.good_percent_change_front = good_percent_change_front
 
                                 db.session.commit()
                                 print(f"{user_name} - good_upgrade success!")
@@ -938,6 +957,7 @@ for name in USER_NAME_LIST:
                     print(f"{user.good_days}/{user.bad_days} = {user.good_percent}")
                     print(f"goal: {user.goal}")
 
+
                 else:
                     user_data = UserData(user=user_name,
                                          calls=my_activities_today,
@@ -963,7 +983,10 @@ for name in USER_NAME_LIST:
                                          calls_to_goal=person_1.calls_to_goal,
                                          offers_to_goal=person_1.offers_to_goal,
                                          my_sales_avg=my_sales_six_m_avg,
-                                         my_sales_3_month_avg=my_sales_3_month_avg)
+                                         my_sales_3_month_avg=my_sales_3_month_avg,
+                                         three_avg_change_front=1,
+                                         avg_change_front=1,
+                                         good_percent_change_front=1)
                     db.session.add(user_data)
                     db.session.commit()
                     print(f"{user_name} - new success!")

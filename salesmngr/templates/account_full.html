@@ -192,6 +192,18 @@
                                                 </div>
                                                 <li class="list-inline-item  font-weight-bold mb-0"><p> €</p></li>
                                             </li>
+                                            <li class="list-inline-item mb-0 mr-0 ">
+                                                <div class="col text-right pr-0 pl-0">
+                                                    {% if three_avg_change_front > 0 %}
+                                                    <i class="green-text fa-solid fa-chevron-up fa-beat-fade"></i>
+                                                    <p class="green-text font-weight-bold">{{ three_avg_change_front }}</p>
+                                                    {% elif three_avg_change_front < 0 %}
+                                                    <i class="red-text fa-solid fa-chevron-down fa-beat-fade"></i>
+                                                    <p class="red-text font-weight-bold">{{ three_avg_change_front }}</p>
+                                                    {% endif %}
+                                                </div>
+                                                <li class="list-inline-item  font-weight-bold mb-0"><p> €</p></li>
+                                            </li>
                                     </li>
                                 </div>
                                 <div>
@@ -208,6 +220,18 @@
                                                 </div>
                                                 <li class="list-inline-item  font-weight-bold mb-0"><p> %</p></li>
                                             </li>
+                                            <li class="list-inline-item mb-0 mr-0 ">
+                                                <div class="col text-right pr-0 pl-0">
+                                                    {% if good_percent_change_front > 0 %}
+                                                    <i class="green-text fa-solid fa-chevron-up fa-beat-fade"></i>
+                                                    <p class="green-text font-weight-bold">{{ good_percent_change_front }}</p>
+                                                    {% elif good_percent_change_front < 0 %}
+                                                    <i class="red-text fa-solid fa-chevron-down fa-beat-fade"></i>
+                                                    <p class="red-text font-weight-bold">{{ good_percent_change_front }}</p>
+                                                    {% endif %}
+                                                </div>
+                                                <li class="list-inline-item  font-weight-bold mb-0"><p> %</p></li>
+                                            </li>
                                     </li>
                                 </div>
                                 <div>
@@ -218,6 +242,18 @@
                                             </div>
                                             <li class="list-inline-item  font-weight-bold mb-0"><p> €</p></li>
                                         </li>
+                                        <li class="list-inline-item mb-0 mr-0 ">
+                                                <div class="col text-right pr-0 pl-0">
+                                                    {% if avg_change_front > 0 %}
+                                                    <i class="green-text fa-solid fa-chevron-up fa-beat-fade"></i>
+                                                    <p class="green-text font-weight-bold">{{ avg_change_front }}</p>
+                                                    {% elif avg_change_front < 0 %}
+                                                    <i class="red-text fa-solid fa-chevron-down fa-beat-fade"></i>
+                                                    <p class="red-text font-weight-bold">{{ avg_change_front }}</p>
+                                                    {% endif %}
+                                                </div>
+                                                <li class="list-inline-item  font-weight-bold mb-0"><p> €</p></li>
+                                            </li>
                                 </li>
                                 </div>
                                 <ul class="list-inline mb-0 ">

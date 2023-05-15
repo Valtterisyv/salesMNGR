@@ -89,6 +89,9 @@ def account():
                                    offers_to_goal=user.offers_to_goal,
                                    my_sales_avg=user.my_sales_avg,
                                    my_sales_3_month_avg=user.my_sales_3_month_avg,
+                                   three_avg_change_front=user.three_avg_change_front,
+                                   avg_change_front=user.avg_change_front,
+                                   good_percent_change_front=user.good_percent_change_front,
                                    form=form)
 
 
