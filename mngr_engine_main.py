@@ -155,7 +155,7 @@ for name in USER_NAME_LIST:
             for num in range(0, len(my_sales_six_month_for_iteration), 2):
                 if pd.to_datetime(my_sales_six_month_for_iteration[num]).date() > now - timedelta(days=92):
                     my_sales_month_2_2.append(float(my_sales_six_month_for_iteration[num + 1]))
-            my_sales_3_month_avg = sum(my_sales_month_2_2) / 3
+            my_sales_3_month_avg = round(sum(my_sales_month_2_2) / 3)
 
             today_offers_list = [item for item in six_m_offers_list if
                                  datetime.strftime(pd.to_datetime(item), '%Y-%m-%d') == datetime.strftime(now,
