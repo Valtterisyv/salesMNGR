@@ -195,20 +195,11 @@
                                             <li class="list-inline-item mb-0 mr-0 ">
                                                 <div class="col text-right pr-0 pl-0">
                                                     {% if three_avg_change_front > 0 %}
-                                                    <li class="list-inline-item mb-0 mr-0 ">
-                                                        <i class="green-text fa-solid fa-chevron-up fa-beat-fade"></i>
-                                                    </li>
-                                                    <li class="list-inline-item mb-0 mr-0 ">
-                                                        <p class="green-text">{{ three_avg_change_front }}€</p>
-                                                    </li>
-                                                    <li class="list-inline-item mb-0 mr-0 ">
+                                                    <i class="green-text fa-solid fa-chevron-up fa-beat-fade"></i>
+                                                    <p class="green-text">{{ three_avg_change_front }}€</p>
                                                     {% elif three_avg_change_front < 0 %}
-                                                    <li class="list-inline-item mb-0 mr-0 ">
-                                                        <i class="red-text fa-solid fa-chevron-down fa-beat-fade"></i>
-                                                    </li>
-                                                    <li class="list-inline-item mb-0 mr-0 ">
-                                                        <p class="red-text">{{ three_avg_change_front }}€</p>
-                                                    </li>
+                                                    <i class="red-text fa-solid fa-chevron-down fa-beat-fade"></i>
+                                                    <p class="red-text">{{ three_avg_change_front }}€</p>
                                                     {% endif %}
                                                 </div>
                                             </li>
@@ -216,37 +207,31 @@
                                 </div>
                                 <div>
                                     <li class="list-inline-item  font-weight-bold mb-0 mr-1 ml-5"><p class="ml-0">Puheluprosentti</p></li>
-                                        <li class="list-inline-item mb-0 mr-0 ">
-                                            <div class="col text-right pr-0 pl-0">
-                                                {% if good_percent >= 80 %}
-                                                <h3 class="green-text font-weight-bold">{{ good_percent }}</h3>
-                                                {% elif good_percent >= 50 %}
-                                                <h3 class="font-weight-bold gray-text">{{ good_percent }}</h3>
-                                                {% elif good_percent < 50 %}
-                                                <h3 class="red-text font-weight-bold">{{ good_percent }}</h3>
-                                                {% endif %}
-                                            </div>
-                                            <li class="list-inline-item  font-weight-bold mb-0"><p> %</p></li>
-                                        </li>
-                                        <li class="list-inline-item mb-0 mr-0 ">
-                                            <div class="col text-right pr-0 pl-0">
-                                                {% if good_percent_change_front > 0 %}
+                                            <li class="list-inline-item mb-0 mr-0 ">
+                                                <div class="col text-right pr-0 pl-0">
+                                                    {% if good_percent >= 80 %}
+                                                    <h3 class="green-text font-weight-bold">{{ good_percent }}</h3>
+                                                    {% elif good_percent >= 50 %}
+                                                    <h3 class="font-weight-bold gray-text">{{ good_percent }}</h3>
+                                                    {% elif good_percent < 50 %}
+                                                    <h3 class="red-text font-weight-bold">{{ good_percent }}</h3>
+                                                    {% endif %}
+                                                </div>
+                                                <li class="list-inline-item  font-weight-bold mb-0"><p> %</p></li>
+                                            </li>
+                                            <li class="list-inline-item mb-0 mr-0 ">
                                                 <li class="list-inline-item mb-0 mr-0 ">
+                                                <div class="col text-right pr-0 pl-0">
+                                                    {% if good_percent_change_front > 0 %}
                                                     <i class="green-text fa-solid fa-chevron-up fa-beat-fade"></i>
-                                                </li>
-                                                <li class="list-inline-item mb-0 mr-0 ">
                                                     <p class="green-text">{{ good_percent_change_front }}%</p>
-                                                </li>
-                                                {% elif good_percent_change_front < 0 %}
-                                                <li class="list-inline-item mb-0 mr-0 ">
+                                                    {% elif good_percent_change_front < 0 %}
                                                     <i class="red-text fa-solid fa-chevron-down fa-beat-fade"></i>
-                                                </li>
-                                                <li class="list-inline-item mb-0 mr-0 ">
                                                     <p class="red-text">{{ good_percent_change_front }}%</p>
-                                                </li>
-                                                {% endif %}
-                                            </div>
-                                        </li>
+                                                    {% endif %}
+                                                </div>
+                                            </li>
+                                            </li>
                                     </li>
                                 </div>
                                 <div>
@@ -258,25 +243,17 @@
                                             <li class="list-inline-item  font-weight-bold mb-0"><p> €</p></li>
                                         </li>
                                         <li class="list-inline-item mb-0 mr-0 ">
-                                            <div class="col text-right pr-0 pl-0">
-                                                {% if avg_change_front > 0 %}
-                                                <li class="list-inline-item mb-0 mr-0 ">
-                                                <i class="green-text fa-solid fa-chevron-up fa-beat-fade"></i>
-                                                </li>
-                                                <li class="list-inline-item mb-0 mr-0 ">
-                                                <p class="green-text">{{ avg_change_front }}€</p>
-                                                </li>
-                                                {% elif avg_change_front < 0 %}
-                                                <li class="list-inline-item mb-0 mr-0 ">
-                                                <i class="red-text fa-solid fa-chevron-down fa-beat-fade"></i>
-                                                </li>
-                                                <li class="list-inline-item mb-0 mr-0 ">
-                                                <p class="red-text">{{ avg_change_front }}€</p>
-                                                </li>
-                                                {% endif %}
-                                            </div>
-                                        </li>
-                                    </li>
+                                                <div class="col text-right pr-0 pl-0">
+                                                    {% if avg_change_front > 0 %}
+                                                    <i class="green-text fa-solid fa-chevron-up fa-beat-fade"></i>
+                                                    <p class="green-text">{{ avg_change_front }}€</p>
+                                                    {% elif avg_change_front < 0 %}
+                                                    <i class="red-text fa-solid fa-chevron-down fa-beat-fade"></i>
+                                                    <p class="red-text">{{ avg_change_front }}€</p>
+                                                    {% endif %}
+                                                </div>
+                                            </li>
+                                </li>
                                 </div>
                                 <ul class="list-inline mb-0 ">
                                         <li class="list-inline-item  font-weight-bold mb-0 mr-1 ml-5"><p>Aktiivisuus</p></li>
