@@ -236,11 +236,11 @@ for name in USER_NAME_LIST:
                     good_percent_change = user.good_percent
                     avg_change = user.my_sales_avg
                     if my_sales_3_month_avg != three_avg_change:
-                        three_avg_change_front = three_avg_change - my_sales_3_month_avg
+                        three_avg_change_front = my_sales_3_month_avg - three_avg_change
                         user.three_avg_change_front = three_avg_change_front
                         db.session.commit()
                     if my_sales_six_m_avg != avg_change:
-                        avg_change_front = avg_change - my_sales_six_m_avg
+                        avg_change_front = my_sales_six_m_avg - avg_change
                         user.avg_change_front = avg_change_front
                         db.session.commit()
 
@@ -895,7 +895,7 @@ for name in USER_NAME_LIST:
                                     good_percent = 0
 
                                 if good_percent != good_percent_change:
-                                    good_percent_change_front = good_percent_change - good_percent
+                                    good_percent_change_front = good_percent - good_percent_change
 
                                 user.good_days = good_days
                                 user.bad_days = bad_days
