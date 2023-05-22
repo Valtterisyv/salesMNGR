@@ -131,8 +131,7 @@ def reset_token(token):
     if form.validate_on_submit():
         hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
         user.password = hashed_password
-        with app.app_context():
-            db.session.commit()
+        db.session.commit()
         flash(f"Salasanasi on päivitetty! Voit nyt kirjautua sisään.", "success")
         return redirect(url_for("login"))
     return render_template("reset_token.html", title="Vaihda Salasana", form=form)
