@@ -18,6 +18,15 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;600&display=swap" rel="stylesheet">
   </head>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-06KVR2TW0R"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-06KVR2TW0R');
+</script>
   <div class="container-fluid pl-0 pr-0" style="background-color: #222222;">
             <nav class="navbar navbar-expand-lg navbar-dark pl-5 pr-5">
                 {% if current_user.is_authenticated %}
